@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2eee7">
+  <title>电商图｜李卓作品集</title>
+  <meta name="description" content="电商产品视觉与详情页作品展示。">
+  <link rel="stylesheet" href="/portfolio-pages.css">
+  <style>
+    :root{color-scheme:light;--page:#f2eee7;--ink:#26313b;--muted:#6c6b67;--sand:#e5ddd1;--line:#d6cabb}
+    html,body{min-height:100%;background:var(--page);color:var(--ink)}
+    .detail-page{width:min(1440px,100% - 64px);margin:auto}
+    .detail-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);font-size:13px}
+    .detail-nav a:first-child{font-weight:700}
+    .detail-heading{padding:48px 0 24px}
+    .detail-heading p{margin:0 0 8px;color:var(--muted);font-size:12px;letter-spacing:.08em}
+    .detail-heading h1{margin:0;font-family:"Noto Serif SC","Songti SC","STSong",serif;font-size:clamp(46px,8vw,88px);font-weight:600;letter-spacing:.04em;line-height:1.02;color:#1f2a34;text-shadow:0 1px 0 rgba(255,255,255,.7);}
+    .detail-heading h1::after{display:inline-block;width:clamp(34px,5vw,58px);height:3px;margin:0 0 .2em .22em;background:#9b7958;content:"";vertical-align:baseline}
+    .detail-embed{overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--sand);box-shadow:0 14px 36px rgba(67,53,37,.16)}
+    .detail-embed iframe{display:block;width:100%;height:calc(100dvh - 168px);min-height:680px;border:0;background:var(--page)}
+    .detail-return{display:flex;justify-content:center;padding:26px 0 42px}
+    .detail-return a{display:inline-flex;align-items:center;gap:9px;padding:12px 18px;border:1px solid #b8ac9b;border-radius:999px;color:var(--ink);font-size:13px;transition:background .18s,color .18s,border-color .18s}
+    .detail-return a:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+    .detail-return a span{font-size:18px;line-height:1}
+    @media(max-width:640px){.detail-page{width:calc(100% - 24px)}.detail-heading{padding:30px 0 16px}.detail-heading h1{font-size:clamp(48px,13vw,68px)}.detail-embed{border-radius:8px}.detail-embed iframe{height:calc(100dvh - 126px);min-height:560px}}
+  </style>
+</head>
+<body>
+  <main class="detail-page">
+    <nav class="detail-nav"><a href="/">XIAOLI × 李卓</a><a href="/work/portfolio/">全部作品</a></nav>
+    <header class="detail-heading"><p>PRODUCT VISUALS / E-COMMERCE</p><h1>电商图</h1></header>
+    <section class="detail-embed" aria-label="电商详情页作品集">
+      <iframe title="11 页电商详情作品" src="/portfolio-template/index.html?background=warm"></iframe>
+    </section>
+    <footer class="detail-return"><a href="/" aria-label="返回作品集首页"><span aria-hidden="true">←</span> 返回作品集首页</a></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "project": "li-zhuo-portfolio",
+  "displayName": "李卓 / AI 电商视觉作品集",
+  "baseline": "legacy",
+  "readFirst": [
+    "AGENTS.md",
+    "CODEX_HANDOFF.md",
+    "WORKFLOW_PLAYBOOK.md",
+    "MIGRATION_README.md",
+    "design-qa.md"
+  ],
+  "stack": {
+    "framework": "React 19",
+    "bundler": "Vite 6",
+    "packageManager": "npm",
+    "nodeMinimumMajor": 18,
+    "start": "npm run start",
+    "build": "npm run build"
+  },
+  "routes": {
+    "top": "#top",
+    "selectedWorks": "#selected-works",
+    "posterGallery": "#poster-gallery",
+    "generationWorkbench": "#generation-workbench",
+    "braceletCase": "#bracelet-case",
+    "about": "#about",
+    "removedLiveRoute": "#ai-people-case"
+  },
+  "userConstraints": [
+    "Continue the old page; do not adopt the rejected recent redesign.",
+    "Keep the removed people sphere/wall out of the live DOM.",
+    "Keep all real local poster and workbench assets.",
+    "Workbench UI switching is manual and must not autoplay while idle.",
+    "Preserve drag, keyboard, lightbox, reduced-motion, and responsive behavior.",
+    "Do not add the blue bottom effect or empty/intersecting sphere layout."
+  ],
+  "effects": {
+    "posterDepthCarousel": {
+      "files": [
+        "src/components/DepthCarousel.jsx",
+        "src/components/DepthCarousel.css",
+        "src/main.jsx",
+        "src/data.js"
+      ],
+      "assetCount": 47,
+      "interaction": ["button", "keyboard", "pointer-drag", "lightbox"]
+    },
+    "workbenchManualMorph": {
+      "files": [
+        "src/components/MorphSlider.jsx",
+        "src/components/MorphSlider.css",
+        "src/main.jsx"
+      ],
+      "items": 3,
+      "autoplay": false,
+      "interaction": ["button", "keyboard", "lightbox"]
+    },
+    "variableProximity": {
+      "files": [
+        "src/components/VariableProximity.jsx",
+        "src/components/VariableProximity.css",
+        "src/main.jsx"
+      ],
+      "reducedMotion": true
+    },
+    "peopleWall": {
+      "liveDomCount": 0,
+      "reusableSource": "src/components/DomeGallery.jsx"
+    }
+  },
+  "assets": {
+    "posterCollection": "public/assets/portfolio/dome-posters/collection",
+    "posterOriginalInputs": "docs/references/source-materials/poster-originals",
+    "workbench": "public/assets/portfolio/generation-workbench",
+    "bracelet": "public/assets/portfolio/bracelet-case",
+    "userReferences": "docs/references/user-comments"
+  },
+  "verification": {
+    "tests": [
+      "src/portfolioPresentation.test.js",
+      "src/generationWorkbench.test.js",
+      "src/portfolioEffects.test.js",
+      "src/galleryLayout.test.js",
+      "src/circularGalleryContract.test.js"
+    ],
+    "command": "node --test src/portfolioPresentation.test.js src/generationWorkbench.test.js src/portfolioEffects.test.js src/galleryLayout.test.js src/circularGalleryContract.test.js",
+    "migrationCommand": ".\\verify-migration.ps1 -Install -Build -Test",
+    "targetMachineBrowserCheck": "Open #bracelet-case, #poster-gallery, #generation-workbench, and #about at desktop and 390px mobile widths."
+  },
+  "excludedFromMigration": [
+    "node_modules",
+    "兼职接单/.build/node_modules",
+    "视频剪辑/**/.venv",
+    "**/__pycache__",
+    ".playwright-cli",
+    ".superpowers",
+    "兼职接单",
+    "offboarding-cleanup-preview-2026-08-13.md"
+  ],
+  "secretPolicy": "Never include passwords, cookies, tokens, API keys, browser profiles, or login state. OMINIAPI_API_KEY is an environment-variable name only."
+}

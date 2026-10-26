@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>电商设计作品集全套排版系统（11页完整版）</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #161617;
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #f3f4f6;
+      overflow-x: hidden;
+    }
+
+    /* Outer Poster Frame (Matches the 3:4 dark charcoal presentation board in 1.jpg - 11.jpg) */
+    .poster-board {
+      background-color: #323031;
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto 36px auto;
+      padding: 24px 34px 24px 34px;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: transform 0.2s ease;
+    }
+
+    /* Inner Dark Canvas used in Pages 2 - 11 */
+    .inner-dark-stage {
+      background-color: #242223;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Subtle dark wave shape at bottom-left of inner dark stages */
+    .inner-dark-stage::before {
+      content: "";
+      position: absolute;
+      left: -12%;
+      bottom: -18%;
+      width: 68%;
+      height: 42%;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: auto;
+      z-index: 0;
+    }
+
+    /* Hide decorative footer strips only. */
+    .poster-board > .flex.items-end.justify-between.text-neutral-100.mt-5.px-1 { display: none !important; }
+
+    /* Page 02 product-specific palette and long-image presentation. */
+    .poster-board[data-board="2"] .inner-dark-stage {
+      background: linear-gradient(145deg, #fff8df 0%, #f7e4a8 58%, #f2b51d 100%);
+      color: #4a2b16;
+    }
+    .poster-board[data-board="2"] .p2-product-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      box-shadow: 0 20px 50px rgba(92, 53, 8, 0.28);
+    }
+    .poster-board[data-board="2"] .p2-image-slot {
+      padding: 0;
+      background: #fff8df;
+      border-color: rgba(194, 126, 18, 0.45);
+    }
+    .poster-board[data-board="2"] .p2-image-slot .demo-visual,
+    .poster-board[data-board="2"] .p2-image-slot .wireframe-visual,
+    .poster-board[data-board="2"] .p2-image-slot .slot-overlay {
+      display: none !important;
+    }
+    .poster-board[data-board="2"] .inner-dark-stage {
+      min-height: 0;
+      justify-content: flex-start;
+    }
+    .poster-board[data-board="2"] .p2-layout {
+      align-items: start;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .poster-board[data-board="2"] .p2-copy {
+      align-self: start;
+      position: sticky;
+      top: 7rem;
+      color: #6c4828;
+    }
+    .poster-board[data-board="2"] .p2-copy > div:nth-child(2) {
+      color: #6c4828;
+    }
+    .poster-board[data-board="2"] .p2-copy h3,
+    .poster-board[data-board="2"] .p2-copy .text-white {
+      color: #5b3217 !important;
+    }
+    .poster-board[data-board="2"] .p2-copy .text-neutral-300,
+    .poster-board[data-board="2"] .p2-copy .text-neutral-200 {
+      color: #6c4828 !important;
+    }
+    .poster-board[data-board="2"] .p2-copy .border-neutral-500 {
+      border-color: #c88b24;
+    }
+    .poster-board[data-board="2"] .p2-copy .text-lg {
+      color: #5b3217;
+    }
+    .poster-board[data-board="2"] .p2-pages {
+      min-height: 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .poster-board[data-board="2"] .p2-image-slot {
+      position: static;
+      flex: 1 1 0;
+      width: 50%;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border-radius: 0.75rem;
+    }
+    .poster-board[data-board="2"] .p2-image-slot + .p2-image-slot {
+      margin-top: 3rem;
+    }
+    @media (max-width: 767px) {
+      .poster-board[data-board="2"] .p2-copy {
+        position: static;
+      }
+      .poster-board[data-board="2"] .p2-pages {
+        flex-direction: column;
+      }
+      .poster-board[data-board="2"] .p2-image-slot {
+        width: 100%;
+      }
+      .poster-board[data-board="2"] .p2-image-slot + .p2-image-slot {
+        margin-top: 0;
+      }
+    }
+    .poster-board[data-board="4"] .inner-dark-stage {
+      background: linear-gradient(145deg, #f8f4e9 0%, #d9edf2 55%, #1663a5 100%);
+      color: #10284d;
+      min-height: 0;
+      justify-content: flex-start;
+    }
+    .poster-board[data-board="4"] .p3-layout { align-items: start; margin: 1.5rem 0; }
+    .poster-board[data-board="4"] .p3-copy { align-self: start; position: sticky; top: 7rem; color: #17345d; }
+    .poster-board[data-board="4"] .p3-copy { display: flex; flex-direction: column; opacity: 1; visibility: visible; z-index: 30; }
+    .poster-board[data-board="4"] .p3-copy p { color: #264b73 !important; opacity: 1 !important; }
+    .poster-board[data-board="4"] .p3-copy > div { opacity: 1; visibility: visible; }
+    .poster-board[data-board="4"] .p3-copy h3,
+    .poster-board[data-board="4"] .p3-copy .text-white { color: #10284d !important; }
+    .poster-board[data-board="4"] .p3-copy .text-neutral-300,
+    .poster-board[data-board="4"] .p3-copy .text-neutral-200 { color: #264b73 !important; }
+    .poster-board[data-board="4"] .p3-copy .border-neutral-500 { border-color: #6aaed2; }
+    .poster-board[data-board="4"] .p3-copy > .pt-4 { display: none; }
+    .poster-board[data-board="4"] .p3-copy > .space-y-4 > div:nth-child(n+2) { display: none; }
+    .poster-board[data-board="4"] .p3-copy > .space-y-4 { font-size: 12px; line-height: 1.65; }
+    .poster-board[data-board="4"] .p3-pages { min-height: 0; display: flex; align-items: flex-start; gap: 1rem; }
+    .poster-board[data-board="4"] .p3-image-slot { position: static; flex: 1 1 0; width: 50%; min-height: 0; margin: 0; padding: 0; border-radius: .75rem; }
+    .poster-board[data-board="4"] .p3-image-slot + .p3-image-slot { margin-top: 3rem; }
+    .poster-board[data-board="4"] .p3-product-image { display: block; width: 100%; height: auto; border-radius: .75rem; box-shadow: 0 20px 50px rgba(15, 43, 75, .3); }
+    .poster-board[data-board="4"] .p3-image-slot .demo-visual,
+    .poster-board[data-board="4"] .p3-image-slot .wireframe-visual,
+    .poster-board[data-board="4"] .p3-image-slot .slot-overlay { display: none !important; }
+    @media (max-width: 767px) {
+      .poster-board[data-board="4"] .p3-copy { position: static; }
+      .poster-board[data-board="4"] .p3-pages { flex-direction: column; }
+      .poster-board[data-board="4"] .p3-image-slot { width: 100%; }
+      .poster-board[data-board="4"] .p3-image-slot + .p3-image-slot { margin-top: 0; }
+    }
+    .poster-board[data-board="3"] .inner-dark-stage {
+      background: linear-gradient(145deg, #f7f3e8 0%, #dcebf2 54%, #1457a0 100%);
+      color: #10284d;
+      min-height: 0;
+      justify-content: flex-start;
+    }
+    .poster-board[data-board="3"] .p4-layout { align-items: start; margin: 1.5rem 0; }
+    .poster-board[data-board="3"] .p4-copy { align-self: start; position: sticky; top: 7rem; color: #17345d; }
+    .poster-board[data-board="3"] .p4-copy h3,
+    .poster-board[data-board="3"] .p4-copy .text-white { color: #10284d !important; }
+    .poster-board[data-board="3"] .p4-copy .text-neutral-300,
+    .poster-board[data-board="3"] .p4-copy .text-neutral-200 { color: #264b73 !important; }
+    .poster-board[data-board="3"] .p4-copy .border-neutral-500 { border-color: #ef6f86; }
+    .poster-board[data-board="3"] .p4-pages { display: flex; flex-direction: column; gap: 1rem; }
+    .poster-board[data-board="3"] .p4-image-slot { padding: 0; background: #f7f3e8; border-color: rgba(20, 87, 160, .35); }
+    .poster-board[data-board="3"] .p4-product-image { display: block; width: 100%; height: auto; border-radius: 1rem; box-shadow: 0 20px 50px rgba(16, 40, 77, .28); }
+    .poster-board[data-board="3"] .p4-copy > .space-y-4 > div:nth-child(2) { display: none; }
+    .poster-board[data-board="3"] .p4-copy > .space-y-4 > div:nth-child(3) { display: none; }
+    .poster-board[data-board="3"] .p4-layout > .p4-copy { grid-column: span 3 / span 3; }
+    .poster-board[data-board="3"] .p4-layout > .p4-pages { grid-column: span 9 / span 9; }
+    .poster-board[data-board="3"] .p4-copy h2 { color: #1457a0 !important; }
+    .poster-board[data-board="3"] .p4-copy > div:first-child p { color: #31506a !important; }
+    .poster-board[data-board="3"] .p4-copy > .space-y-4 p { color: #293746 !important; }
+    .poster-board[data-board="3"] .p4-copy > .pt-4 { display: none; }
+    .poster-board[data-board="3"] .p4-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem; }
+    .poster-board[data-board="3"] .p4-copy > .space-y-4 > div:nth-child(2),
+    .poster-board[data-board="3"] .p4-copy > .space-y-4 > div:nth-child(3) { display: block; }
+    .poster-board[data-board="3"] .p4-copy > .pt-4 { display: block; }
+    .poster-board[data-board="3"] .p4-copy > .pt-4 .text-white { color: #10284d !important; }
+    .poster-board[data-board="3"] .p4-copy > .pt-4 .text-neutral-200 { color: #264b73 !important; }
+    .poster-board[data-board="3"] .p4-copy > .pt-4 .border-neutral-500 { border-color: #ef6f86; }
+    .poster-board[data-board="3"] .p4-layout > .p4-copy { grid-column: span 4 / span 4; }
+    .poster-board[data-board="3"] .p4-layout > .p4-pages { grid-column: span 8 / span 8; }
+    .poster-board[data-board="3"] .p4-image-slot .demo-visual,
+    .poster-board[data-board="3"] .p4-image-slot .wireframe-visual,
+    .poster-board[data-board="3"] .p4-image-slot .slot-overlay { display: none !important; }
+    @media (max-width: 767px) { .poster-board[data-board="3"] .p4-copy { position: static; } }
+    .poster-board[data-board="5"] > .space-y-4.p5-original-layout { display: none; }
+    .poster-board[data-board="5"] .p5-product-layout { background: linear-gradient(145deg, #f8f4e9 0%, #d9edf2 58%, #10284d 100%); color: #10284d; padding: 2rem; }
+    .poster-board[data-board="5"] .p5-product-layout > .grid { display: flex; flex-direction: column; }
+    .poster-board[data-board="5"] .p5-product-layout aside { max-width: 100%; }
+    .poster-board[data-board="5"] .p5-product-layout aside { display: none; }
+    .poster-board[data-board="5"] .p5-product-layout h2 { color: #10284d; }
+    .poster-board[data-board="5"] .p5-product-layout p { color: #264b73; }
+    .poster-board[data-board="5"] .p5-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .poster-board[data-board="5"] .p5-gallery figure { position: relative; margin: 0; aspect-ratio: 1; overflow: hidden; border-radius: .7rem; background: #f8f4e9; box-shadow: 0 12px 28px rgba(16, 40, 77, .22); }
+    .poster-board[data-board="5"] .p5-gallery img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    @media (max-width: 767px) { .poster-board[data-board="5"] .p5-product-layout { padding: 1rem; } .poster-board[data-board="5"] .p5-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; } }
+    .poster-board[data-board="1"] .p1-inner { background: linear-gradient(145deg, #fff8ee 0%, #ffe2e7 55%, #f3aebe 100%); }
+    .poster-board[data-board="1"] .p1-long-image { display: block; width: 100%; height: auto; }
+    .poster-board[data-board="1"] .p1-long-slot { background: #fff8ee; border-color: rgba(220, 126, 151, .35); }
+    .poster-board[data-board="1"] .p1-long-slot .demo-visual,
+    .poster-board[data-board="1"] .p1-long-slot .wireframe-visual,
+    .poster-board[data-board="1"] .p1-long-slot .slot-overlay { display: none !important; }
+    .poster-board[data-board="1"] .p1-copy-card { background: linear-gradient(145deg, #fff8ee, #f9d6df) !important; color: #472632 !important; }
+    .poster-board[data-board="1"] .p1-copy-card h2,
+    .poster-board[data-board="1"] .p1-copy-card h3 { color: #713b50 !important; }
+    .poster-board[data-board="1"] .p1-copy-card p { color: #624853 !important; }
+    .poster-board[data-board="1"] .p1-copy-card .text-slate-800,
+    .poster-board[data-board="1"] .p1-copy-card .text-slate-900 { color: #624853 !important; }
+    .poster-board[data-board="1"] .p1-stage { min-height: 0; padding: 1.5rem; }
+    .poster-board[data-board="1"] .p1-content { display: grid; grid-template-columns: minmax(220px, .8fr) minmax(0, 1.2fr); gap: 1.5rem; align-items: start; }
+    .poster-board[data-board="1"] .p1-copy-card { position: sticky; top: 7rem; min-height: 0; margin: 0; background: linear-gradient(145deg, #fff8ee, #f9d6df); }
+    .poster-board[data-board="1"] .p1-image-stack { background: #fff8ee; }
+    .poster-board[data-board="1"] .p1-long-image { border-bottom: 8px solid #f6c2ce; }
+    .poster-board[data-board="1"] .p1-long-image:last-child { border-bottom: 0; }
+    .poster-board[data-board="7"] .inner-dark-stage { background: linear-gradient(145deg, #fff8f2 0%, #f7d4c8 55%, #e88c78 100%); color: #5b3028; min-height: 0; }
+    .poster-board[data-board="7"] .p7-layout { display: block; position: relative; min-height: 1740px; }
+    .poster-board[data-board="7"] .p7-copy { position: absolute; left: 0; top: 500px; bottom: auto; width: 48%; min-height: 480px; background: linear-gradient(145deg, #fff8f2, #f9ddd2); border: 0; border-radius: 1rem; padding: 2rem; color: #6b3a31; z-index: 30; }
+    .poster-board[data-board="7"] .p7-copy h2, .poster-board[data-board="7"] .p7-copy h3 { color: #a84f40; }
+    .poster-board[data-board="7"] .p7-copy p { color: #754940; }
+    .poster-board[data-board="7"] .p7-copy h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+    .poster-board[data-board="7"] .p7-copy h3 { font-size: 1.15rem; }
+    .poster-board[data-board="7"] .p7-copy .space-y-4 { font-size: 1rem; line-height: 1.8; }
+    .poster-board[data-board="7"] .p7-gallery { display: block; position: relative; width: 100%; }
+    .poster-board[data-board="7"] .p7-gallery img { display: block; width: 100%; height: auto; border-radius: .9rem; box-shadow: 0 18px 40px rgba(114, 55, 42, .25); border: 1px solid rgba(207,111,91,.35); }
+    .poster-board[data-board="7"] .p7-gallery img + img { position: absolute; right: 2%; top: 300px; width: 48%; height: auto; margin: 0; object-fit: contain; }
+    .poster-board[data-board="7"] .p7-old-content { display: none !important; }
+    @media (max-width: 767px) { .poster-board[data-board="7"] .p7-layout { min-height: 0; } .poster-board[data-board="7"] .p7-copy { position: static; width: 100%; min-height: 0; margin-top: 1rem; } .poster-board[data-board="7"] .p7-gallery img + img { position: static; width: 100%; margin-top: 1rem; } }
+    .poster-board[data-board="8"] > *:not(.p8-domestic) { display: none !important; }
+    .poster-board[data-board="8"] .p8-domestic { display: block; background: linear-gradient(145deg, #fff8f2 0%, #f7d4c8 55%, #e88c78 100%); padding: 2rem; border-radius: 2px; }
+    .poster-board[data-board="8"] .p8-header { display: none; }
+    .poster-board[data-board="8"] .p8-gallery { display: flex; justify-content: center; align-items: flex-start; gap: 1rem; }
+    .poster-board[data-board="8"] .p8-gallery img { display: block; width: 44%; height: auto; border-radius: .9rem; box-shadow: 0 18px 40px rgba(114,55,42,.22); }
+    .poster-board[data-board="8"] .p8-gallery img + img { margin-top: 3rem; }
+    @media (max-width: 767px) { .poster-board[data-board="8"] .p8-domestic { padding: 1rem; } .poster-board[data-board="8"] .p8-gallery { flex-direction: column; align-items: center; } .poster-board[data-board="8"] .p8-gallery img, .poster-board[data-board="8"] .p8-gallery img + img { width: 100%; margin-top: 0; } }
+    .poster-board[data-board="9"] > *:not(.p9-domestic) { display: none !important; }
+    .poster-board[data-board="9"] .p9-domestic { display: block; background: linear-gradient(145deg, #fffdf3 0%, #e6d2f2 55%, #713f8f 100%); padding: 1.5rem; border-radius: 2px; }
+    .poster-board[data-board="9"] .p9-header { display: flex; justify-content: space-between; color: #5e3478; font-size: .75rem; margin-bottom: 1rem; }
+    .poster-board[data-board="9"] .p9-gallery { display: flex; gap: 1rem; align-items: flex-start; }
+    .poster-board[data-board="9"] .p9-gallery img { display: block; width: calc(50% - .5rem); height: auto; border-radius: .9rem; box-shadow: 0 18px 40px rgba(75,35,95,.25); }
+    .poster-board[data-board="9"] .p9-gallery img + img { margin-top: 3rem; }
+    @media (max-width: 767px) { .poster-board[data-board="9"] .p9-gallery { flex-direction: column; } .poster-board[data-board="9"] .p9-gallery img, .poster-board[data-board="9"] .p9-gallery img + img { width: 100%; margin-top: 0; } }
+    .poster-board[data-board="10"] > *:not(.p10-domestic) { display: none !important; }
+    .poster-board[data-board="10"] .p10-domestic { display: block; background: linear-gradient(145deg, #fffaf0 0%, #ead8b8 60%, #b78a54 100%); padding: 1.5rem; border-radius: 2px; }
+    .poster-board[data-board="10"] .p10-header { display: flex; justify-content: space-between; color: #634126; font-size: .75rem; margin-bottom: 1rem; }
+    .poster-board[data-board="10"] .p10-gallery { display: flex; gap: 1rem; align-items: flex-start; }
+    .poster-board[data-board="10"] .p10-gallery img { display: block; width: calc(50% - .5rem); height: auto; border-radius: .9rem; box-shadow: 0 18px 40px rgba(95,62,30,.25); }
+    .poster-board[data-board="10"] .p10-gallery img + img { margin-top: 3rem; }
+    @media (max-width: 767px) { .poster-board[data-board="10"] .p10-gallery { flex-direction: column; } .poster-board[data-board="10"] .p10-gallery img, .poster-board[data-board="10"] .p10-gallery img + img { width: 100%; margin-top: 0; } }
+    .poster-board[data-board="11"] > *:not(.p11-domestic) { display: none !important; }
+    .poster-board[data-board="11"] .p11-domestic { display: block; background: linear-gradient(145deg, #fffaf0 0%, #e3f0df 60%, #b5cfa9 100%); padding: 1.5rem; border-radius: 2px; }
+    .poster-board[data-board="11"] .p11-header { display: flex; justify-content: space-between; color: #496146; font-size: .75rem; margin-bottom: 1rem; }
+    .poster-board[data-board="11"] .p11-gallery { display: flex; gap: 1rem; align-items: flex-start; }
+    .poster-board[data-board="11"] .p11-gallery img { display: block; width: calc(50% - .5rem); height: auto; border-radius: .9rem; box-shadow: 0 18px 40px rgba(67,94,57,.24); }
+    .poster-board[data-board="11"] .p11-gallery img + img { margin-top: 3rem; }
+    @media (max-width: 767px) { .poster-board[data-board="11"] .p11-gallery { flex-direction: column; } .poster-board[data-board="11"] .p11-gallery img, .poster-board[data-board="11"] .p11-gallery img + img { width: 100%; margin-top: 0; } }
+    .poster-board[data-board="6"] .p6-real-image { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: .75rem; }
+    .poster-board[data-board="6"] [data-slot="p6-1"],
+    .poster-board[data-board="6"] [data-slot="p6-2"],
+    .poster-board[data-board="6"] [data-slot="p6-3"] { padding: 0 !important; overflow: hidden; }
+    .poster-board[data-board="6"] .p6-middle-image { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: .75rem; }
+    .poster-board[data-board="6"] [data-slot="p6-4"],
+    .poster-board[data-board="6"] [data-slot="p6-5"],
+    .poster-board[data-board="6"] [data-slot="p6-6"] { padding: 0 !important; overflow: hidden; }
+    .poster-board[data-board="6"] [data-slot="p6-4"] .demo-visual,
+    .poster-board[data-board="6"] [data-slot="p6-4"] .wireframe-visual,
+    .poster-board[data-board="6"] [data-slot="p6-5"] .demo-visual,
+    .poster-board[data-board="6"] [data-slot="p6-5"] .wireframe-visual,
+    .poster-board[data-board="6"] [data-slot="p6-6"] .demo-visual,
+    .poster-board[data-board="6"] [data-slot="p6-6"] .wireframe-visual { display: none !important; }
+    .poster-board[data-board="6"] .p6-last-image { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: .75rem; }
+    .poster-board[data-board="6"] [data-slot="p6-7"],
+    .poster-board[data-board="6"] [data-slot="p6-8"],
+    .poster-board[data-board="6"] [data-slot="p6-9"] { padding: 0 !important; overflow: hidden; }
+    .poster-board[data-board="6"] [data-slot="p6-7"] .demo-visual,
+    .poster-board[data-board="6"] [data-slot="p6-7"] .wireframe-visual,
+    .poster-board[data-board="6"] [data-slot="p6-8"] .demo-visual,
+    .poster-board[data-board="6"] [data-slot="p6-8"] .wireframe-visual,
+    .poster-board[data-board="6"] [data-slot="p6-9"] .demo-visual,
+    .poster-board[data-board="6"] [data-slot="p6-9"] .wireframe-visual { display: none !important; }
+    /* Page 06 unified square grid treatment. */
+    .poster-board[data-board="6"] [data-slot^="p6-"] { position: relative; aspect-ratio: 1 / 1 !important; height: auto !important; min-height: 0 !important; overflow: hidden; }
+    .poster-board[data-board="6"] [data-slot^="p6-"]::before { display: none; }
+    .poster-board[data-board="6"] [data-slot="p6-1"]::before,
+    .poster-board[data-board="6"] [data-slot="p6-2"]::before,
+    .poster-board[data-board="6"] [data-slot="p6-3"]::before { content: "山野拾光｜植萃修护精华油"; }
+    .poster-board[data-board="6"] [data-slot="p6-4"]::before,
+    .poster-board[data-board="6"] [data-slot="p6-5"]::before,
+    .poster-board[data-board="6"] [data-slot="p6-6"]::before { content: "山野拾光｜木质馥奇香水"; }
+    .poster-board[data-board="6"] [data-slot="p6-7"]::before,
+    .poster-board[data-board="6"] [data-slot="p6-8"]::before,
+    .poster-board[data-board="6"] [data-slot="p6-9"]::before { content: "Mochi Lab｜草莓燕麦厚乳"; }
+    .poster-board[data-board="6"] [data-slot="p6-1"],
+    .poster-board[data-board="6"] [data-slot="p6-2"],
+    .poster-board[data-board="6"] [data-slot="p6-3"] { background: #e8f0e8 !important; }
+    .poster-board[data-board="6"] [data-slot="p6-4"],
+    .poster-board[data-board="6"] [data-slot="p6-5"],
+    .poster-board[data-board="6"] [data-slot="p6-6"] { background: #eadfce !important; }
+    .poster-board[data-board="6"] [data-slot="p6-7"],
+    .poster-board[data-board="6"] [data-slot="p6-8"],
+    .poster-board[data-board="6"] [data-slot="p6-9"] { background: #f7e2d5 !important; }
+    .poster-board[data-board="6"] > .space-y-4 > .inner-dark-stage:nth-child(1) { background: #e8f0e8 !important; }
+    .poster-board[data-board="6"] > .space-y-4 > .inner-dark-stage:nth-child(2) { background: #eadfce !important; }
+    .poster-board[data-board="6"] > .space-y-4 > .inner-dark-stage:nth-child(3) { background: #f7e2d5 !important; }
+    .poster-board[data-board="6"] [data-slot="p6-1"] .demo-visual,
+    .poster-board[data-board="6"] [data-slot="p6-1"] .wireframe-visual,
+    .poster-board[data-board="6"] [data-slot="p6-2"] .demo-visual,
+    .poster-board[data-board="6"] [data-slot="p6-2"] .wireframe-visual,
+    .poster-board[data-board="6"] [data-slot="p6-3"] .demo-visual,
+    .poster-board[data-board="6"] [data-slot="p6-3"] .wireframe-visual { display: none !important; }
+    @media (max-width: 767px) { .poster-board[data-board="1"] .p1-stage { padding: .75rem; } .poster-board[data-board="1"] .p1-content { grid-template-columns: 1fr; } .poster-board[data-board="1"] .p1-copy-card { position: static; } }
+    /* Page 03: image only. Page 04: full product description. */
+    .poster-board[data-board="3"] .p4-copy { display: none !important; }
+    .poster-board[data-board="3"] .p4-layout > .p4-copy { display: none !important; }
+    .poster-board[data-board="3"] .p4-layout > .p4-pages { grid-column: 1 / -1; width: 100%; max-width: 900px; margin: 0 auto; }
+    .poster-board[data-board="3"] .p4-product-image { width: 100%; }
+    .poster-board[data-board="4"] .p3-copy > .space-y-4 > div:nth-child(n+2) { display: block; }
+    .poster-board[data-board="4"] .p3-copy > .pt-4 { display: block; }
+    .poster-board[data-board="4"] .p3-copy > .pt-4 .text-white { color: #10284d !important; }
+    .poster-board[data-board="4"] .p3-copy > .pt-4 .text-neutral-200 { color: #264b73 !important; }
+    .poster-board[data-board="4"] .p3-copy > .pt-4 .border-neutral-500 { border-color: #6aaed2; }
+    .poster-board[data-board="1"] .p1-stage { padding: 1.5rem; border-radius: 2px; }
+    .poster-board[data-board="1"] .p1-header { display: flex; justify-content: space-between; align-items: center; color: #713b50; font-size: .75rem; margin-bottom: 1.5rem; }
+    .poster-board[data-board="1"] .p1-content { grid-template-columns: minmax(220px, 4fr) minmax(0, 8fr); gap: 1.5rem; }
+    .poster-board[data-board="1"] .p1-copy-card { position: static; align-self: start; }
+    .poster-board[data-board="1"] .p1-image-stack { display: flex; align-items: flex-start; gap: 1rem; overflow: visible; border: 0; box-shadow: none; background: transparent; }
+    .poster-board[data-board="1"] .p1-long-image { width: calc(50% - .5rem); border: 1px solid rgba(220, 126, 151, .35); border-radius: .75rem; box-shadow: 0 20px 45px rgba(115, 55, 77, .2); }
+    .poster-board[data-board="1"] .p1-long-image + .p1-long-image { margin-top: 3rem; }
+    @media (max-width: 767px) { .poster-board[data-board="1"] .p1-content { grid-template-columns: 1fr; } .poster-board[data-board="1"] .p1-image-stack { flex-direction: column; } .poster-board[data-board="1"] .p1-long-image { width: 100%; } .poster-board[data-board="1"] .p1-long-image + .p1-long-image { margin-top: 0; } }
+
+    /* Editable text styling */
+    [contenteditable="true"] {
+      outline: none;
+      border-radius: 3px;
+      transition: background-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    body:not(.preview-clean) [contenteditable="true"]:hover {
+      background-color: rgba(56, 189, 248, 0.14);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.45);
+      cursor: text;
+    }
+    body:not(.preview-clean) [contenteditable="true"]:focus {
+      background-color: rgba(56, 189, 248, 0.22);
+      box-shadow: 0 0 0 2px #38bdf8;
+    }
+
+    /* Uploadable image slot styling */
+    .upload-slot {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .upload-slot .slot-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(2px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.18s ease;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+      padding: 8px;
+      z-index: 30;
+      pointer-events: none;
+    }
+    body:not(.preview-clean) .upload-slot:hover .slot-overlay {
+      opacity: 1;
+    }
+
+    /* Custom uploaded image layer */
+    .slot-custom-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 25;
+    }
+
+    /* Mode switching: Demo Visuals vs Wireframe Blueprint */
+    body.mode-wireframe .demo-visual {
+      display: none !important;
+    }
+    body.mode-wireframe .wireframe-visual {
+      display: flex !important;
+    }
+    body.mode-demo .demo-visual {
+      display: flex !important;
+    }
+    body.mode-demo .wireframe-visual {
+      display: none !important;
+    }
+
+    /* Overview Grid Mode (2 columns on desktop) */
+    #boardsContainer.view-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 24px;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    #boardsContainer.view-grid .poster-board {
+      margin-bottom: 0;
+    }
+
+    /* Hide non-active boards when in Single Page Focus mode */
+    #boardsContainer.view-single .poster-board.hidden-board {
+      display: none !important;
+    }
+
+    /* Scrollbar styling for page tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @media print {
+      body {
+        background: #323031;
+      }
+      .no-print {
+        display: none !important;
+      }
+      #boardsContainer {
+        display: block !important;
+      }
+      .poster-board {
+        display: block !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        page-break-after: always;
+        break-after: page;
+      }
+    }
+  </style>  <style id="corner-text-contrast">
+    .poster-board .corner-sequence-label { color: #26313b !important; opacity: 1 !important; }
+    .poster-board .corner-sequence-label span { color: #26313b !important; }
+    .poster-board [class*="text-neutral-300"], .poster-board [class*="text-neutral-400"], .poster-board [class*="text-slate-400"], .poster-board [class*="text-gray-400"] { color: #46515d !important; opacity: 1 !important; }
+    .poster-board [class*="text-neutral-200"], .poster-board [class*="text-slate-300"], .poster-board [class*="text-gray-300"] { color: #34404c !important; opacity: 1 !important; }
+  </style>  <style id="corner-align-left">
+    .poster-board .corner-sequence-label,
+    .poster-board .p1-header,
+    .poster-board .p8-header,
+    .poster-board .p9-header,
+    .poster-board .p10-header,
+    .poster-board .p11-header,
+    .poster-board .p1-copy-card > .flex.justify-between.text-xs,
+    .poster-board .p2-copy > .flex.justify-between.text-xs,
+    .poster-board .p3-copy > .flex.justify-between.text-xs,
+    .poster-board .p4-copy > .flex.justify-between.text-xs,
+    .poster-board .p7-copy > .flex.justify-between.text-xs,
+    .poster-board .p8-domestic .flex.items-center.gap-1\\.5,
+    .poster-board .p9-domestic .flex.items-center.gap-1\\.5,
+    .poster-board .p10-domestic .flex.items-center.gap-1\\.5,
+    .poster-board .p11-domestic .flex.items-center.gap-1\\.5 { justify-content: flex-start !important; text-align: left !important; gap: .5rem !important; }
+    .poster-board .corner-sequence-label > span:last-child,
+    .poster-board .p1-header > span:last-child,
+    .poster-board .p8-header > span:last-child,
+    .poster-board .p9-header > span:last-child,
+    .poster-board .p10-header > span:last-child,
+    .poster-board .p11-header > span:last-child { display: none !important; }
+  </style>  <style id="consistent-corner-labels-v2">
+    .portfolio-corner-label { position:absolute!important; z-index:50!important; top:24px!important; left:24px!important; right:auto!important; display:flex!important; align-items:center!important; justify-content:flex-start!important; gap:7px!important; margin:0!important; padding:0!important; border:0!important; background:transparent!important; box-shadow:none!important; color:#26313b!important; font-family:Arial,"Microsoft YaHei","Noto Sans SC",sans-serif!important; font-size:12px!important; font-weight:500!important; line-height:1.3!important; letter-spacing:0!important; text-align:left!important; }
+    .portfolio-corner-label .portfolio-corner-number { display:inline!important; min-width:0!important; height:auto!important; padding:0!important; border:0!important; border-radius:0!important; background:transparent!important; color:inherit!important; font:inherit!important; }
+    .portfolio-corner-label .portfolio-corner-category { display:inline!important; color:inherit!important; font:inherit!important; }
+    @media(max-width:600px){.portfolio-corner-label{top:12px!important;left:12px!important;font-size:11px!important}}
+  </style>  <style id="remove-stray-template-letters">
+    .poster-board > .inner-dark-stage > .flex.items-end.justify-between.text-neutral-100,
+    .poster-board .p1-header > span:last-child,
+    .poster-board .p8-header > span:last-child,
+    .poster-board .p9-header > span:last-child,
+    .poster-board .p10-header > span:last-child,
+    .poster-board .p11-header > span:last-child,
+    .poster-board [class*="rounded-full"][class*="GALLe"] { display:none!important; }
+  </style>  <style id="remove-image-footer-squares">
+    .poster-board .inner-dark-stage > .flex.items-end.justify-between > span.w-3.h-4.rounded-full.border,
+    .poster-board .inner-dark-stage > .flex.items-end.justify-between > span.w-2\\.5.h-3\\.5.rounded-full.border { display:none!important; }
+  </style>  <style id="hide-page-six-upload-hints">
+    .poster-board[data-board="6"] .slot-overlay { display:none!important; opacity:0!important; pointer-events:none!important; }
+  </style>  <style id="portfolio-warm-background">
+    body { background:#f2eee7!important; color:#27313a; }
+    .poster-board { background:#e5ddd1!important; border:1px solid #d6cabb!important; box-shadow:0 14px 36px rgba(67,53,37,.16)!important; }
+    @media print { body { background:#f2eee7!important; } }
+  </style></head>
+<body class="mode-demo">
+
+  <!-- Hidden File Input for Clicking Any Slot to Upload Image -->
+  <input type="file" id="globalSlotFileInput" accept="image/*" class="hidden" />
+
+  <!-- ====================================================================
+       STICKY TOP CONTROL HEADER (Navigation + Mode Switch + Print/Export)
+       ==================================================================== -->
+  <header class="no-print sticky top-0 z-50 bg-neutral-900/95 backdrop-blur border-b border-neutral-800" style="display:none!important">
+    <!-- Top Row: Title & Global Controls -->
+    <div class="max-w-7xl mx-auto px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2.5">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-400/30 text-sky-400 text-xs font-black">11P</span>
+        <div>
+          <h1 class="text-xs sm:text-sm font-bold text-white leading-tight">电商设计作品集 · 全套 11 页排版模板系统</h1>
+          <p class="text-[11px] text-neutral-400 hidden md:block">涵盖：叠层说明页(P1) · 双长图错位页(P2-P3) · 宽幅长图页(P4) · 主图矩阵(P5-P6) · 独立站网页(P7-P8) · 双长图对比(P9-P11)</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <!-- View Switcher: Single Page vs All 11 Pages Stream vs 2-Col Grid -->
+        <div class="inline-flex rounded-lg bg-neutral-800 p-0.5 border border-neutral-700 text-xs">
+          <button id="btnViewSingle" type="button" class="px-2.5 py-1 rounded-md font-medium transition bg-sky-600 text-white">
+            单页精编
+          </button>
+          <button id="btnViewStream" type="button" class="px-2.5 py-1 rounded-md font-medium transition text-neutral-300 hover:text-white">
+            11页连览
+          </button>
+          <button id="btnViewGrid" type="button" class="px-2.5 py-1 rounded-md font-medium transition text-neutral-300 hover:text-white">
+            双栏总览
+          </button>
+        </div>
+
+        <!-- Visual Mode Switcher: Demo vs Wireframe Blueprint (For "No Product/Works Yet") -->
+        <div class="inline-flex rounded-lg bg-neutral-800 p-0.5 border border-neutral-700 text-xs">
+          <button id="btnModeDemo" type="button" class="px-2.5 py-1 rounded-md font-medium transition bg-emerald-600 text-white">
+            示意视觉版
+          </button>
+          <button id="btnModeWireframe" type="button" class="px-2.5 py-1 rounded-md font-medium transition text-neutral-300 hover:text-white">
+            空白线框占位（无作品规划）
+          </button>
+        </div>
+
+        <!-- Clean Preview Toggle -->
+        <button id="btnCleanPreview" type="button" class="px-2.5 py-1.5 text-xs font-medium rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 transition">
+          纯净预览
+        </button>
+
+        <!-- Reset Images -->
+        <button id="btnResetAll" type="button" class="px-2.5 py-1.5 text-xs font-medium rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 border border-neutral-700 transition">
+          重置图片
+        </button>
+
+        <!-- Print / Export All 11 Pages PDF -->
+        <button id="btnPrintAll" type="button" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 transition shadow">
+          导出 / 打印 PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- Second Row: 11-Page Navigation Bar -->
+    <div class="border-t border-neutral-800/80 bg-neutral-950/60 px-3 sm:px-5 py-1.5">
+      <div class="max-w-7xl mx-auto flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="pageNavTabs">
+        <button type="button" data-page="1" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-semibold bg-sky-500 text-slate-950 transition">P01 · 叠层说明+长图</button>
+        <button type="button" data-page="2" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition">P02 · 左文+双暗黑长图</button>
+        <button type="button" data-page="3" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition">P03 · 左文+角色袜主视觉</button>
+        <button type="button" data-page="4" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition">P04 · 左文+双长图角色袜</button>
+        <button type="button" data-page="5" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition">P05 · 主图说明+三屏方图</button>
+        <button type="button" data-page="6" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition">P06 · 三屏九宫格主图墙</button>
+        <button type="button" data-page="7" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition">P07 · 国内电商杯具详情</button>
+        <button type="button" data-page="8" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition">P08 · 双独立站错位叠放</button>
+        <button type="button" data-page="9" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition">P09 · 双长图并排(美妆)</button>
+        <button type="button" data-page="10" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition">P10 · 双长图并排(家居五金)</button>
+        <button type="button" data-page="11" class="page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition">P11 · 双长图并排(小家电)</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Helper Banner -->
+  <div class="no-print max-w-[920px] mx-auto mt-3 px-3" style="display:none!important">
+    <div class="bg-neutral-800/80 border border-neutral-700/70 rounded-lg px-3.5 py-2 flex flex-wrap items-center justify-between gap-2 text-xs text-neutral-300">
+      <div class="flex items-center gap-2">
+        <span class="px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 font-semibold text-[11px]">全套11页通用</span>
+        <span id="currentPageDescription">当前展示：<strong>第 1 页（叠层左卡项目说明 + 右侧详情页长图）</strong> — 点击任意文字可改文案，点击任意图片框可上传替换你的未来作品。</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <button id="btnPrevPage" type="button" class="px-2 py-0.5 rounded bg-neutral-700 hover:bg-neutral-600 text-white text-[11px]">上一页</button>
+        <button id="btnNextPage" type="button" class="px-2 py-0.5 rounded bg-neutral-700 hover:bg-neutral-600 text-white text-[11px]">下一页</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       ALL 11 PORTFOLIO BOARDS CONTAINER
+       ==================================================================== -->
+  <main id="boardsContainer" class="view-single py-4 px-2 sm:px-4">
+
+    <!-- ==================================================================
+         PAGE 01 (Matches 1.jpg): 雾霾蓝叠层左卡项目说明 + 右侧详情页长图
+         ================================================================== -->
+    <article class="poster-board" data-board="1">
+  <div class="inner-dark-stage p1-inner p1-stage">
+    <div class="p1-header"><span>01　电商设计</span><span>GALLe</span></div>
+    <div class="p1-content">
+      <section class="p1-copy-card rounded-xl p-6 sm:p-8 shadow-xl border">
+        <div class="flex justify-between text-xs text-[#624853] mb-8"><span>01　电商设计</span><span>GALLe</span></div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#713b50]">SOFT DONUT</h2>
+        <p class="text-sm font-bold text-[#624853] mt-2">宠物甜甜圈恢复圈 · 柔软舒适防舔护颈</p>
+        <div class="space-y-5 mt-8 text-[12px] leading-[1.8] text-[#624853]">
+          <div><h3 class="font-bold text-[#713b50] mb-1">项目背景：</h3><p>帮助宠物在恢复期间减少舔咬，同时兼顾休息、进食与日常活动。</p></div>
+          <div><h3 class="font-bold text-[#713b50] mb-1">设计灵感：</h3><p>以甜甜圈造型和柔和粉彩，呈现轻松亲和的宠物护理体验。</p></div>
+          <div><h3 class="font-bold text-[#713b50] mb-1">视觉策略：</h3><p>用奶油白、浅粉与玫瑰色突出舒适感，并清晰展示尺码和佩戴步骤。</p></div>
+        </div>
+        <div class="flex items-center justify-between mt-8 pt-4 border-t border-[#dbaeba] text-[#713b50]"><span class="text-xs font-semibold">思源黑体</span><div class="flex gap-2"><span class="w-6 h-4 rounded bg-[#f5d2da]"></span><span class="w-6 h-4 rounded bg-[#df7893]"></span><span class="w-6 h-4 rounded bg-[#fff8ee] border border-[#dbaeba]"></span></div></div>
+      </section>
+      <div class="p1-image-stack rounded-xl overflow-hidden shadow-xl border border-white/70">
+        <img class="p1-long-image" src="/portfolio-template/assets/asset-01.jpg" alt="宠物甜甜圈恢复圈详情展示" />
+        <img class="p1-long-image" src="/portfolio-template/assets/asset-09.jpg" alt="宠物恢复圈尺码与佩戴步骤" />
+      </div>
+    </div>
+  </div>
+</article>
+
+
+    <!-- ==================================================================
+         PAGE 02 (Matches 2.jpg): 左栏项目说明 + 右侧双暗黑电竞长图错位叠放
+         ================================================================== -->
+    <article class="poster-board hidden-board" data-board="2">
+      <div class="inner-dark-stage rounded-[2px] p-6 sm:p-8 min-h-[940px] flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs text-neutral-300 mb-6 relative z-10">
+          <div class="flex items-center gap-1.5">
+            <span class="px-1 border border-neutral-400 rounded-[2px] text-[10px]">01</span>
+            <span contenteditable="true">电商设计</span>
+          </div>
+          <span contenteditable="true" class="font-semibold tracking-wider">GALLe</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start relative z-10 my-auto p2-layout">
+          <!-- Left Column -->
+          <div class="md:col-span-4 flex flex-col justify-between space-y-5 text-neutral-200 pr-2 p2-copy">
+            <div>
+              <h2 contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider text-[#5b3217]">DUCK</h2>
+              <p contenteditable="true" class="text-xs sm:text-sm font-medium text-[#8a5a25] mt-1">宠物慢食互动玩具 · 按压出粮小黄鸭</p>
+              <div class="w-6 h-[1.5px] bg-[#c88b24] mt-4"></div>
+            </div>
+
+            <div class="space-y-4 text-[11px] leading-[1.8] text-neutral-300/90">
+              <div>
+                <h3 contenteditable="true" class="font-bold text-[#5b3217] mb-1">项目背景：</h3>
+                <p contenteditable="true" class="text-justify text-[#6c4828]">针对宠物进食过快、缺少互动的问题，设计一款兼具慢食训练与趣味玩耍的按压出粮玩具，适合猫狗居家陪伴场景。</p>
+              </div>
+              <div>
+                <h3 contenteditable="true" class="font-bold text-[#5b3217] mb-1">设计灵感：</h3>
+                <p contenteditable="true" class="text-justify text-[#6c4828]">以小黄鸭造型和宠物家庭互动为核心，通过奶油黄、暖橙与木质家居场景传递安全、亲和、好玩的产品气质。</p>
+              </div>
+              <div>
+                <h3 contenteditable="true" class="font-bold text-[#5b3217] mb-1">视觉策略：</h3>
+                <p contenteditable="true" class="text-justify text-[#6c4828]">页面以长图叙事呈现慢食、防滑、易清洗、无散落部件和尺寸参数，使用圆润曲线与暖色块强化宠物友好感。</p>
+              </div>
+            </div>
+
+            <div class="pt-4 space-y-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-10 h-6 rounded-md bg-[#f5dfa0] inline-block shadow"></span>
+                <span class="w-10 h-6 rounded-md bg-[#f2b51d] inline-block shadow"></span>
+                <span class="w-10 h-6 rounded-md bg-[#5b3217] inline-block shadow"></span>
+              </div>
+              <div class="inline-flex items-center gap-2.5 px-4 py-1 rounded-full border border-neutral-500 text-neutral-200">
+                <span class="text-lg font-extrabold text-white">Aa</span>
+                <span contenteditable="true" class="text-[11px]">思源黑体</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Area: Two Staggered Overlapping Vertical Long Pages -->
+          <div class="md:col-span-8 relative p2-pages">
+            <!-- Front-Left Long Page -->
+            <div class="upload-slot p2-image-slot rounded-xl overflow-hidden bg-[#fff8df] border border-orange-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.25)] relative z-20" data-slot="p2-long-left">
+              <img class="p2-product-image" src="/portfolio-template/assets/asset-21.jpg" alt="小黄鸭宠物慢食互动玩具详情页" />
+            </div>
+
+            <!-- Back-Right Long Page -->
+            <div class="upload-slot p2-image-slot rounded-xl overflow-hidden bg-[#fff8df] border border-red-500/25 shadow-2xl z-10" data-slot="p2-long-right">
+              <img class="p2-product-image" src="/portfolio-template/assets/asset-22.jpg" alt="小黄鸭宠物慢食互动玩具参数详情页" />
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-end justify-between text-neutral-400 pt-6 relative z-10">
+          <span contenteditable="true" class="text-[10px] font-bold tracking-wider text-neutral-200">RECORDING</span>
+          <span class="w-3 h-4 rounded-full border border-neutral-400 inline-block"></span>
+        </div>
+      </div>
+
+      <div class="flex items-end justify-between text-neutral-100 mt-5 px-1">
+        <div class="flex items-center gap-2">
+          <span contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider">STUDY</span>
+          <span class="inline-block w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent"></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span contenteditable="true" class="text-xs text-neutral-300">P02 / 11 · 双长图错位排版（暗黑科技）</span>
+          <div class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold text-[10px] shadow">GALLe</div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ==================================================================
+         PAGE 03: 仅展示角色袜横版主视觉
+         ================================================================== -->
+    <article class="poster-board hidden-board" data-board="3">
+      <div class="inner-dark-stage rounded-[2px] p-6 sm:p-8 min-h-[940px] flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs text-neutral-300 mb-6 relative z-10">
+          <div class="flex items-center gap-1.5">
+            <span class="px-1 border border-neutral-400 rounded-[2px] text-[10px]">01</span>
+            <span contenteditable="true">电商设计</span>
+          </div>
+          <span contenteditable="true" class="font-semibold tracking-wider">GALLe</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start relative z-10 my-auto p4-layout">
+          <div class="md:col-span-4 flex flex-col justify-between space-y-5 text-neutral-200 pr-2 p4-copy">
+            <div>
+              <h2 contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider text-white">3D 互动角色袜</h2>
+              <p contenteditable="true" class="text-xs sm:text-sm font-medium text-neutral-300 mt-1">柔软精梳棉 · 趣味立体设计</p>
+              <div class="w-6 h-[1.5px] bg-neutral-400 mt-4"></div>
+            </div>
+
+            <div class="space-y-4 text-[11px] leading-[1.8] text-neutral-300/90">
+              <div>
+                <h3 contenteditable="true" class="font-bold text-white mb-1">项目背景：</h3>
+                <p contenteditable="true" class="text-justify">彩辫、立体表情与柔软针织，让趣味角色融入儿童日常穿搭。</p>
+              </div>
+              <div>
+                <h3 contenteditable="true" class="font-bold text-white mb-1">设计灵感：</h3>
+                <p contenteditable="true" class="text-justify">从彩虹辫、夸张表情和黄色小手提取角色语言，强调可触摸、可互动、可被看见的 3D 细节，让孩子每一步都更有趣。</p>
+              </div>
+              <div>
+                <h3 contenteditable="true" class="font-bold text-white mb-1">视觉策略：</h3>
+                <p contenteditable="true" class="text-justify">以深海军蓝承托主体，搭配奶油白、亮蓝和珊瑚粉做信息强调，围绕角色特写、触感卖点和穿着场景建立清晰的视觉层级。</p>
+              </div>
+            </div>
+
+            <div class="pt-4 space-y-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-10 h-6 rounded-md bg-[#10284d] inline-block shadow"></span>
+                <span class="w-10 h-6 rounded-md bg-[#25a9d6] inline-block shadow"></span>
+                <span class="w-10 h-6 rounded-md bg-[#ef6f86] inline-block shadow"></span>
+              </div>
+              <div class="inline-flex items-center gap-2.5 px-4 py-1 rounded-full border border-neutral-500 text-neutral-200">
+                <span class="text-lg font-extrabold text-white">Aa</span>
+                <span contenteditable="true" class="text-[11px]">思源黑体</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-8 p4-pages">
+            <div class="upload-slot p4-image-slot w-full rounded-2xl overflow-hidden bg-[#f7f3e8] text-stone-800 shadow-2xl border border-white/20" data-slot="p4-wide-long">
+              <img class="p4-product-image" src="/portfolio-template/assets/asset-23.jpg" alt="3D互动3D 互动角色袜横版主视觉" />
+              <div class="demo-visual flex-col w-full">
+                <div class="h-44 bg-gradient-to-r from-[#d8c3ab] to-[#ebd9c5] p-5 flex flex-col justify-between relative">
+                  <div class="text-right ml-auto max-w-[65%]">
+                    <div contenteditable="true" class="text-sm sm:text-base font-extrabold text-stone-900">Scout Smart Camera for the Whole Family</div>
+                    <div contenteditable="true" class="text-[10px] text-stone-600 mt-0.5">Your advanced home monitoring assistant</div>
+                  </div>
+                  <div class="flex items-center justify-around bg-white/50 backdrop-blur-sm rounded-xl p-2.5 text-[10px] font-semibold text-stone-700">
+                    <span>妈妈卧室阅读场景</span>
+                    <span class="px-2 py-0.5 rounded-full bg-amber-800/15 text-amber-900">AI 识别标签：Sarah / Hana</span>
+                    <span>萌宠互动看护</span>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-[#f8f4ec] grid grid-cols-12 gap-3 items-center border-t border-stone-200/70">
+                  <div class="col-span-6 h-24 rounded-xl bg-[#e5d7c5] flex items-center justify-center text-xs font-bold text-stone-700">
+                    360° 云台摄像头桌面实拍位
+                  </div>
+                  <div class="col-span-6 pl-2">
+                    <div contenteditable="true" class="text-xs font-extrabold text-stone-900">Seamless 360° Pan-and-Tilt & Smarter AI</div>
+                    <p contenteditable="true" class="text-[10px] text-stone-500 mt-1">柔美曲线分割版式 · 全屋无死角温和守护</p>
+                  </div>
+                </div>
+
+                <div class="px-4 py-3 bg-[#efe7dc] grid grid-cols-2 gap-3">
+                  <div class="h-28 rounded-2xl bg-[#dccab6] p-3 flex flex-col justify-between">
+                    <span contenteditable="true" class="text-xs font-bold text-stone-900">Focused Awareness for Life's Moments</span>
+                    <span class="text-[10px] text-stone-700">儿童房阅读专注看护场景</span>
+                  </div>
+                  <div class="h-28 rounded-2xl bg-[#e7dacb] p-3 flex flex-col justify-between">
+                    <span contenteditable="true" class="text-xs font-bold text-stone-900">High & Wide Coverage for Peace of Mind</span>
+                    <span class="text-[10px] text-stone-700">客厅广角全景覆盖场景</span>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-[#f8f4ec] grid grid-cols-12 gap-3 items-center">
+                  <div class="col-span-7 h-24 rounded-xl overflow-hidden grid grid-cols-2">
+                    <div class="bg-[#d7c2aa] flex items-center justify-center text-[10px] font-bold text-stone-800">Daytime 白昼</div>
+                    <div class="bg-[#1e293b] flex items-center justify-center text-[10px] font-bold text-sky-200">Night 红外夜视</div>
+                  </div>
+                  <div class="col-span-5">
+                    <div contenteditable="true" class="text-xs font-extrabold text-stone-900">Night and Daytime Vision</div>
+                    <div contenteditable="true" class="text-[10px] text-stone-500 mt-0.5">婴儿床日夜清晰对比演示</div>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-gradient-to-r from-[#8c6244] to-[#b58b68] text-white flex items-center justify-between">
+                  <div>
+                    <div contenteditable="true" class="text-sm font-extrabold">Just Ask SenseX</div>
+                    <div contenteditable="true" class="text-[10px] text-amber-100">手机端 AI 语音助手交互界面切图 + 挂墙多形态安装</div>
+                  </div>
+                  <div class="w-24 h-16 rounded-xl bg-white text-stone-900 p-2 text-center flex flex-col justify-center shadow-lg">
+                    <span class="text-[10px] font-black">SenseX App</span>
+                    <span class="text-[8px] text-stone-500">UI 交互弹窗</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wireframe-visual min-h-[720px] border-2 border-dashed border-amber-700/50 rounded-2xl bg-[#f7f2eb] flex-col items-center justify-center text-stone-700 p-6 text-center">
+                <span class="text-base font-bold">右侧单张宽幅详情页长图占位（推荐比例 1:1.65）</span>
+                <span class="text-xs mt-1">适合智能家居、母婴、宠物、生活美学类产品</span>
+              </div>
+              <div class="slot-overlay"><span>点击上传右侧宽幅详情页长图</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-end justify-between text-neutral-400 pt-6 relative z-10">
+          <span contenteditable="true" class="text-[10px] font-bold tracking-wider text-neutral-200">RECORDING</span>
+          <span class="w-3 h-4 rounded-full border border-neutral-400 inline-block"></span>
+        </div>
+      </div>
+
+      <div class="flex items-end justify-between text-neutral-100 mt-5 px-1">
+        <div class="flex items-center gap-2">
+          <span contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider">STUDY</span>
+          <span class="inline-block w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent"></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span contenteditable="true" class="text-xs text-neutral-300">P03 / 11 · 左文+3D 互动角色袜横版主视觉</span>
+          <div class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold text-[10px] shadow">GALLe</div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ==================================================================
+         PAGE 04: 左栏说明 + 右侧儿童角色袜双长图错位展示
+         ================================================================== -->
+    <article class="poster-board hidden-board" data-board="4">
+      <div class="inner-dark-stage rounded-[2px] p-6 sm:p-8 min-h-[940px] flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs text-neutral-300 mb-6 relative z-10">
+          <div class="flex items-center gap-1.5">
+            <span class="px-1 border border-neutral-400 rounded-[2px] text-[10px]">01</span>
+            <span contenteditable="true">电商设计</span>
+          </div>
+          <span contenteditable="true" class="font-semibold tracking-wider">GALLe</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start relative z-10 my-auto p3-layout">
+          <!-- Left Column -->
+          <div class="md:col-span-4 flex flex-col justify-between space-y-5 text-neutral-200 pr-2 p3-copy">
+            <div>
+              <h2 contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider text-white">角色袜</h2>
+              <p contenteditable="true" class="text-xs sm:text-sm font-medium text-neutral-300 mt-1">儿童立体针织袜 · 彩辫与趣味表情</p>
+              <div class="w-6 h-[1.5px] bg-neutral-400 mt-4"></div>
+            </div>
+
+            <div class="space-y-4 text-[11px] leading-[1.8] text-neutral-300/90">
+              <div>
+                <h3 contenteditable="true" class="font-bold text-white mb-1">项目背景：</h3>
+                <p contenteditable="true" class="text-justify">面向儿童日常穿搭，突出立体角色造型、柔软针织和耐穿舒适体验。</p>
+              </div>
+              <div>
+                <h3 contenteditable="true" class="font-bold text-white mb-1">设计灵感：</h3>
+                <p contenteditable="true" class="text-justify">以彩虹辫、立体眼睛与黄色小手提取角色语言，让袜子更有趣、更有记忆点。</p>
+              </div>
+              <div>
+                <h3 contenteditable="true" class="font-bold text-white mb-1">视觉策略：</h3>
+                <p contenteditable="true" class="text-justify">采用深海军蓝、奶油白与浅蓝配色，围绕造型细节、穿着场景和尺码信息建立层次。</p>
+              </div>
+            </div>
+
+            <div class="pt-4 space-y-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-10 h-6 rounded-md bg-[#10284d] inline-block shadow"></span>
+                <span class="w-10 h-6 rounded-md bg-[#d9edf2] inline-block shadow"></span>
+                <span class="w-10 h-6 rounded-md bg-[#f8f4e9] inline-block shadow"></span>
+              </div>
+              <div class="inline-flex items-center gap-2.5 px-4 py-1 rounded-full border border-neutral-500 text-neutral-200">
+                <span class="text-lg font-extrabold text-white">Aa</span>
+                <span contenteditable="true" class="text-[11px]">思源黑体</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Area: Two Staggered Warm Lifestyle Tech Long Pages -->
+          <div class="md:col-span-8 relative p3-pages">
+            <div class="upload-slot p3-image-slot rounded-xl overflow-hidden bg-[#f8f4e9] text-slate-900 shadow-xl relative z-20" data-slot="p3-long-left">
+              <img class="p3-product-image" src="/portfolio-template/assets/asset-28.jpg" alt="儿童立体玩偶袜详情页" />
+              <div class="demo-visual flex-col space-y-2.5 w-full">
+                <div class="h-32 rounded-lg bg-gradient-to-b from-[#cbb89d] to-[#e6dac8] p-3 flex flex-col justify-between">
+                  <div class="text-[10px] font-bold text-stone-800">UGREEN Nexode Power Bank</div>
+                  <div class="my-auto flex items-center justify-center">
+                    <span class="px-3 py-1.5 rounded bg-stone-900/80 text-amber-200 text-[10px] font-bold">模特手持伸缩线首屏实拍</span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-4 gap-1 text-center">
+                  <div class="bg-stone-900 text-amber-200 p-1.5 rounded"><div class="text-xs font-black">100W</div><div class="text-[7px]">Max Output</div></div>
+                  <div class="bg-stone-800 text-white p-1.5 rounded"><div class="text-[9px] font-bold">3-in-1</div><div class="text-[7px]">Fast Charge</div></div>
+                  <div class="bg-stone-900 text-amber-200 p-1.5 rounded"><div class="text-xs font-black">20000</div><div class="text-[7px]">mAh</div></div>
+                  <div class="bg-stone-800 text-white p-1.5 rounded"><div class="text-[9px] font-bold">TFT</div><div class="text-[7px]">Smart Display</div></div>
+                </div>
+                <div class="h-24 rounded-lg bg-[#d4c4ae] p-2.5 flex items-center justify-between">
+                  <div>
+                    <div class="text-[10px] font-bold text-stone-900">13 Layers of Protection</div>
+                    <div class="text-[8px] text-stone-700 mt-1">过压 / 过流 / 温控 13 重安全守护</div>
+                  </div>
+                  <div class="w-12 h-14 rounded-b-full bg-white/80 border-2 border-stone-600 flex items-center justify-center text-base font-black text-stone-800">13</div>
+                </div>
+                <div class="h-20 rounded-lg bg-white p-2.5 flex items-center justify-between border border-stone-200">
+                  <div>
+                    <div class="text-[10px] font-bold text-stone-900">Ultra-Fast Input Charging</div>
+                    <div class="text-[8px] text-stone-500">自充仅需 1.9 小时满电</div>
+                  </div>
+                  <span class="text-sm font-black text-emerald-600">1.9H</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="h-20 rounded bg-[#e8dfd1] p-2 flex flex-col justify-center">
+                    <span class="text-[9px] font-bold">3-Port Charging</span>
+                    <span class="text-[8px] text-stone-600">户外露营多设备同充</span>
+                  </div>
+                  <div class="h-20 rounded bg-[#e8dfd1] p-2 flex flex-col justify-center">
+                    <span class="text-[9px] font-bold">2-Port 165W</span>
+                    <span class="text-[8px] text-stone-600">差旅高铁办公场景</span>
+                  </div>
+                </div>
+                <div class="h-20 rounded-lg bg-white p-2 flex items-center justify-around border border-stone-200 text-[9px] font-bold text-stone-700">
+                  <span>25000+ 弯折测试</span>
+                  <span>10000+ 抽拉寿命</span>
+                </div>
+              </div>
+
+              <div class="wireframe-visual min-h-[640px] border-2 border-dashed border-stone-500 rounded-xl bg-stone-100 flex-col items-center justify-center text-stone-700 p-4 text-center">
+                <span class="text-sm font-bold">前景长图位 A（暖调商务数码详情页）</span>
+                <span class="text-xs mt-1">包含：人物手持首屏 → 8宫格核心参数 → 安全盾牌卖点 → 户外/差旅双场景 → 耐久测试</span>
+              </div>
+              <div class="slot-overlay"><span>点击上传左侧暖调详情页长图</span></div>
+            </div>
+
+            <div class="upload-slot p3-image-slot rounded-xl overflow-hidden bg-[#f8f4e9] text-slate-900 shadow-xl z-10" data-slot="p3-long-right">
+              <img class="p3-product-image" src="/portfolio-template/assets/asset-29.jpg" alt="儿童立体玩偶袜场景、尺码与洗护详情页" />
+              <div class="demo-visual flex-col space-y-2.5 w-full">
+                <div class="h-28 rounded-lg bg-[#d5c5b0] p-3 flex items-center justify-end">
+                  <span class="text-[10px] font-bold text-stone-800">拉线特写首屏 KV</span>
+                </div>
+                <div class="h-24 rounded-lg bg-stone-900 text-amber-200 p-3 flex items-center justify-between">
+                  <span class="text-xl font-black">45W</span>
+                  <span class="text-[9px] text-neutral-300">GaNInfinity 氮化镓快充芯片</span>
+                </div>
+                <div class="h-24 rounded-lg bg-[#cab8a0] p-3 flex flex-col justify-center">
+                  <span class="text-[10px] font-bold text-stone-900">Retractable Cable</span>
+                  <span class="text-xs font-black text-white mt-1">15000+ 抽拉实测</span>
+                </div>
+                <div class="h-28 rounded-lg bg-stone-300 flex items-center justify-center text-[10px] font-bold text-stone-700">
+                  笔记本电脑磁吸搭接场景图
+                </div>
+                <div class="h-24 rounded-lg bg-stone-800 text-amber-100 p-3 flex items-center justify-between">
+                  <span class="text-xs font-black">GaN</span>
+                  <span class="text-[9px]">8 重温控保护盾牌</span>
+                </div>
+                <div class="h-20 rounded-lg bg-white flex items-center justify-center text-[9px] text-stone-500">
+                  底部多设备线材收纳对比图
+                </div>
+              </div>
+
+              <div class="wireframe-visual min-h-[640px] border-2 border-dashed border-stone-400 rounded-xl bg-stone-200 flex-col items-center justify-center text-stone-700 p-4 text-center">
+                <span class="text-sm font-bold">后景长图位 B（同系列副推款详情页）</span>
+              </div>
+              <div class="slot-overlay"><span>点击上传右侧后景详情页长图</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-end justify-between text-neutral-400 pt-6 relative z-10">
+          <span contenteditable="true" class="text-[10px] font-bold tracking-wider text-neutral-200">RECORDING</span>
+          <span class="w-3 h-4 rounded-full border border-neutral-400 inline-block"></span>
+        </div>
+      </div>
+
+      <div class="flex items-end justify-between text-neutral-100 mt-5 px-1">
+        <div class="flex items-center gap-2">
+          <span contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider">STUDY</span>
+          <span class="inline-block w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent"></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span contenteditable="true" class="text-xs text-neutral-300">P04 / 11 · 双长图错位排版（儿童角色袜）</span>
+          <div class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold text-[10px] shadow">GALLe</div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ==================================================================
+         PAGE 05 (Matches 5.jpg): 三屏分栏画板 — 跨境电商主图说明 + 7张 1:1 主图矩阵
+         ================================================================== -->
+    <article class="poster-board hidden-board" data-board="5">
+      <div class="inner-dark-stage p5-product-layout">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-7 items-start">
+          <aside class="md:col-span-4 space-y-5">
+            <div>
+              <p class="text-xs font-bold uppercase text-[#ef6f86]">Kids Character Socks</p>
+              <h2 class="text-2xl sm:text-3xl font-extrabold mt-2">PLAYFUL 3D</h2>
+              <p class="text-sm font-semibold mt-2">儿童立体互动角色袜 · 亚马逊主图组</p>
+            </div>
+            <div class="space-y-4 text-xs leading-relaxed">
+              <div>
+                <h3 class="font-bold text-[#10284d]">产品定位</h3>
+                <p>一款以立体表情和彩辫装饰为识别点的儿童针织袜，兼顾柔软穿着体验与趣味造型，适用于校园日常、居家玩耍和节日送礼。</p>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#10284d]">主图策略</h3>
+                <p>以同一款蓝色角色袜为唯一主体，通过礼盒、上学穿搭、细节对比、舒适结构、家庭互动和送礼场景呈现不同购买理由，保持产品造型与色彩一致。</p>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#10284d]">视觉语言</h3>
+                <p>深海军蓝建立清晰识别，奶油白留出阅读空间，浅蓝呼应袜身，珊瑚粉点亮表情细节；统一柔和自然光与简洁英文卖点排版。</p>
+              </div>
+            </div>
+            <div class="flex gap-2.5 pt-2">
+              <span class="w-10 h-6 rounded bg-[#10284d] shadow"></span>
+              <span class="w-10 h-6 rounded bg-[#25a9d6] shadow"></span>
+              <span class="w-10 h-6 rounded bg-[#ef6f86] shadow"></span>
+              <span class="w-10 h-6 rounded bg-[#f8f4e9] shadow border border-slate-300"></span>
+            </div>
+          </aside>
+          <div class="p5-gallery">
+            <figure><img src="/portfolio-template/assets/asset-25.jpg" alt="角色袜礼盒送礼主图" /></figure>
+            <figure><img src="/portfolio-template/assets/asset-24.jpg" alt="儿童穿着角色袜上学场景" /></figure>
+            <figure><img src="/portfolio-template/assets/asset-26.jpg" alt="角色袜与普通袜卖点对比" /></figure>
+            <figure><img src="/portfolio-template/assets/asset-27.jpg" alt="角色袜针织与立体细节" /></figure>
+            <figure><img src="/portfolio-template/assets/asset-30.jpg" alt="角色袜特点与适用场景" /></figure>
+            <figure><img src="/portfolio-template/assets/asset-31.jpg" alt="儿童居家穿着角色袜场景" /></figure>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-4 p5-original-layout">
+        <div class="inner-dark-stage rounded-[2px] p-5 sm:p-6 flex flex-col justify-between min-h-[300px]">
+          <div class="flex items-center justify-between text-[11px] text-neutral-300 mb-3 relative z-10">
+            <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[9px]">01</span><span contenteditable="true">电商设计</span></div>
+            <span contenteditable="true" class="font-semibold">GALLe</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center relative z-10 my-auto px-2 sm:px-6">
+            <div class="sm:col-span-5 space-y-2.5 text-neutral-200">
+              <h2 contenteditable="true" class="text-xl sm:text-2xl font-extrabold tracking-wider text-white">MAIN IMAGE</h2>
+              <p contenteditable="true" class="text-xs font-bold text-neutral-300">跨境电商主图，商品转化的视觉入口</p>
+              <p contenteditable="true" class="text-[10px] leading-relaxed text-neutral-400 text-justify pt-1">
+                不同于普通产品海报，跨境主图需要适配海外用户审美，清晰传递核心卖点，在短时间内抓住消费者注意力，为后续 A+ 详情页内容做好铺垫，是整套电商视觉链路里不可忽视的起始部分。
+              </p>
+              <p contenteditable="true" class="text-[10px] leading-relaxed text-neutral-400 text-justify">
+                主图最先抓住海外消费者的视线，直接决定产品的点击率，通过直观的视觉表达快速传递产品核心特征，吸引用户进一步点击进入 Listing。
+              </p>
+            </div>
+            <div class="sm:col-span-7 flex justify-center">
+              <div class="relative">
+                <div class="w-48 h-48 sm:w-52 sm:h-52 rounded-2xl bg-neutral-700/40 absolute -right-3 -bottom-3"></div>
+                <div class="upload-slot w-48 h-48 sm:w-52 sm:h-52 rounded-2xl bg-gradient-to-r from-white via-neutral-100 to-neutral-800 text-slate-900 p-4 relative z-10 shadow-2xl flex flex-col justify-between" data-slot="p5-main-1">
+                  <div class="demo-visual flex-col justify-between h-full w-full">
+                    <div>
+                      <div class="text-[9px] text-slate-500">hoco. W35</div>
+                      <div class="text-xs font-black tracking-tight">НАУШНИКИ</div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="w-10 h-10 rounded-full border-2 border-emerald-500 flex items-center justify-center text-xs font-black">40h</span>
+                      <span class="w-20 h-20 rounded-full bg-white shadow-lg border border-slate-200 flex items-center justify-center text-[10px] font-bold">头戴耳机主图</span>
+                    </div>
+                    <div class="flex justify-between items-end text-[9px]">
+                      <span class="text-slate-600">Bluetooth 5.3</span>
+                      <span class="text-emerald-400 font-black">HD AUDIO</span>
+                    </div>
+                  </div>
+                  <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-400 rounded-xl flex-col items-center justify-center text-slate-700 text-center p-2">
+                    <span class="text-xs font-bold">核心主图位 01（1:1 比例）</span>
+                    <span class="text-[10px] mt-1">建议 1000×1000px</span>
+                  </div>
+                  <div class="slot-overlay"><span>点击上传主图 01</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-end justify-between text-neutral-400 pt-3 relative z-10">
+            <span contenteditable="true" class="text-[9px] font-bold tracking-wider text-neutral-300">RECORDING</span>
+            <span class="w-2.5 h-3.5 rounded-full border border-neutral-400 inline-block"></span>
+          </div>
+        </div>
+
+        <div class="inner-dark-stage rounded-[2px] p-5 sm:p-6 flex flex-col justify-between min-h-[290px]">
+          <div class="flex items-center justify-between text-[11px] text-neutral-300 mb-3 relative z-10">
+            <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[9px]">01</span><span contenteditable="true">电商设计</span></div>
+            <span contenteditable="true" class="font-semibold">GALLe</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 px-2 sm:px-6 my-auto relative z-10">
+            <div class="upload-slot aspect-square rounded-2xl bg-white text-slate-900 p-3.5 shadow-xl flex flex-col justify-between" data-slot="p5-main-2">
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="bg-slate-900 text-white p-2 rounded-lg text-[10px] font-bold">НАУШНИКИ · 90 ЧАСОВ</div>
+                <div class="my-auto mx-auto w-24 h-24 rounded-full bg-slate-800 text-white flex items-center justify-center text-[10px] font-bold shadow-lg">黑色耳机主图</div>
+                <div class="text-[9px] text-emerald-600 font-bold">HD SOUND · 蓝牙 5.3</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-400 rounded-xl flex-col items-center justify-center text-slate-600 text-center">
+                <span class="text-xs font-bold">1:1 主图位 02</span><span class="text-[10px]">暗黑对比风</span>
+              </div>
+              <div class="slot-overlay"><span>点击上传主图 02</span></div>
+            </div>
+
+            <div class="upload-slot aspect-square rounded-2xl bg-white text-slate-900 p-3.5 shadow-xl flex flex-col justify-between text-center" data-slot="p5-main-3">
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div>
+                  <div class="text-[10px] font-extrabold">ANKER SOUNDCORE Q10i</div>
+                  <div class="text-[9px] text-slate-500">60-HOUR PLAYTIME</div>
+                </div>
+                <div class="my-auto mx-auto w-24 h-24 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-lg font-black text-slate-400">BASS</div>
+                <div class="text-[9px] text-slate-400">大字背景排版主图</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-400 rounded-xl flex-col items-center justify-center text-slate-600 text-center">
+                <span class="text-xs font-bold">1:1 主图位 03</span><span class="text-[10px]">居中对称大字风</span>
+              </div>
+              <div class="slot-overlay"><span>点击上传主图 03</span></div>
+            </div>
+
+            <div class="upload-slot aspect-square rounded-2xl bg-gradient-to-b from-white to-slate-200 text-slate-900 p-3.5 shadow-xl flex flex-col justify-between" data-slot="p5-main-4">
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-[10px] font-bold text-lime-700">Сенсорного управления</div>
+                <div class="my-auto flex justify-around items-center">
+                  <span class="w-14 h-16 rounded-xl bg-slate-900 text-white flex items-center justify-center text-[9px]">左耳塞</span>
+                  <span class="w-14 h-16 rounded-xl bg-slate-800 text-white flex items-center justify-center text-[9px]">右耳塞</span>
+                </div>
+                <div class="text-[9px] text-slate-600">入耳式TWS卖点标注主图</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-400 rounded-xl flex-col items-center justify-center text-slate-600 text-center">
+                <span class="text-xs font-bold">1:1 主图位 04</span><span class="text-[10px]">引线卖点标注风</span>
+              </div>
+              <div class="slot-overlay"><span>点击上传主图 04</span></div>
+            </div>
+          </div>
+
+          <div class="flex items-end justify-between text-neutral-400 pt-3 relative z-10">
+            <span contenteditable="true" class="text-[9px] font-bold tracking-wider text-neutral-300">RECORDING</span>
+            <span class="w-2.5 h-3.5 rounded-full border border-neutral-400 inline-block"></span>
+          </div>
+        </div>
+
+        <div class="inner-dark-stage rounded-[2px] p-5 sm:p-6 flex flex-col justify-between min-h-[290px]">
+          <div class="flex items-center justify-between text-[11px] text-neutral-300 mb-3 relative z-10">
+            <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[9px]">01</span><span contenteditable="true">电商设计</span></div>
+            <span contenteditable="true" class="font-semibold">GALLe</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 px-2 sm:px-6 my-auto relative z-10">
+            <div class="upload-slot aspect-square rounded-2xl bg-gradient-to-br from-rose-50 to-white text-slate-900 p-3.5 shadow-xl flex flex-col justify-between text-center" data-slot="p5-main-5">
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-xs font-black">SMART WATCH</div>
+                <div class="my-auto mx-auto w-24 h-24 rounded-2xl bg-rose-200/70 border-2 border-rose-300 flex items-center justify-center text-[10px] font-bold text-rose-900">浅粉手表主图</div>
+                <div class="text-[9px] text-slate-500">几何色块分割版式</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-rose-300 rounded-xl flex-col items-center justify-center text-slate-600">
+                <span class="text-xs font-bold">1:1 主图位 05</span>
+              </div>
+              <div class="slot-overlay"><span>点击上传主图 05</span></div>
+            </div>
+
+            <div class="upload-slot aspect-square rounded-2xl bg-gradient-to-b from-sky-100 via-white to-orange-100 text-slate-900 p-3.5 shadow-xl flex flex-col justify-between text-center" data-slot="p5-main-6">
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-xs font-black text-orange-600">SERIES 8 ULTRA</div>
+                <div class="my-auto mx-auto w-24 h-24 rounded-2xl bg-orange-500 text-white flex items-center justify-center text-[10px] font-bold shadow-md">活力橙表主图</div>
+                <div class="text-[9px] text-slate-600">冷暖撞色视觉冲击</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-orange-300 rounded-xl flex-col items-center justify-center text-slate-600">
+                <span class="text-xs font-bold">1:1 主图位 06</span>
+              </div>
+              <div class="slot-overlay"><span>点击上传主图 06</span></div>
+            </div>
+
+            <div class="upload-slot aspect-square rounded-2xl bg-gradient-to-br from-teal-800 to-emerald-950 text-white p-3.5 shadow-xl flex flex-col justify-between text-center" data-slot="p5-main-7">
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-xs font-black text-emerald-300">SPECIAL COLLECTION</div>
+                <div class="my-auto mx-auto w-24 h-24 rounded-full bg-emerald-900 border-2 border-emerald-400 flex items-center justify-center text-[10px] font-bold">运动圆表主图</div>
+                <div class="text-[9px] text-emerald-200">50% OFF 促销徽章排版</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-emerald-400/50 rounded-xl flex-col items-center justify-center text-emerald-200">
+                <span class="text-xs font-bold">1:1 主图位 07</span>
+              </div>
+              <div class="slot-overlay"><span>点击上传主图 07</span></div>
+            </div>
+          </div>
+
+          <div class="flex items-end justify-between text-neutral-400 pt-3 relative z-10">
+            <span contenteditable="true" class="text-[9px] font-bold tracking-wider text-neutral-300">RECORDING</span>
+            <span class="w-2.5 h-3.5 rounded-full border border-neutral-400 inline-block"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-end justify-between text-neutral-100 mt-5 px-1">
+        <div class="flex items-center gap-2">
+          <span contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider">STUDY</span>
+          <span class="inline-block w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent"></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span contenteditable="true" class="text-xs text-neutral-300">P05 / 11 · 跨境电商主图矩阵（上说明+中下三联）</span>
+          <div class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold text-[10px] shadow">GALLe</div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ==================================================================
+         PAGE 06 (Matches 6.jpg): 三屏九宫格主图墙（上屏 1:1 + 中下屏 3:4 竖版主图）
+         ================================================================== -->
+    <article class="poster-board hidden-board" data-board="6">
+      <div class="space-y-4">
+        <div class="inner-dark-stage rounded-[2px] p-5 flex flex-col justify-between min-h-[280px]">
+          <div class="flex items-center justify-between text-[11px] text-neutral-300 mb-3 relative z-10">
+            <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[9px]">01</span><span contenteditable="true">山野拾光｜植萃修护精华油</span></div>
+            <span contenteditable="true" class="font-semibold">GALLe</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 px-2 sm:px-6 my-auto relative z-10">
+            <div class="upload-slot aspect-square rounded-2xl bg-gradient-to-b from-sky-100 to-amber-50 text-slate-800 p-3 flex flex-col justify-between text-center shadow-lg" data-slot="p6-1">
+              <img class="p6-real-image" src="/portfolio-template/assets/asset-08.jpg" alt="山野拾光植萃修护精华油主图" />
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-[10px] font-bold">Multi-purpose Fan</div>
+                <div class="my-auto text-xs font-bold text-sky-800">多场景便携小风扇主图 1</div>
+                <div class="text-[9px] text-slate-500">清新夏日在家/办公实拍</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-sky-400 rounded-xl flex-col items-center justify-center text-slate-700"><span class="text-xs font-bold">九宫格 01 (1:1)</span></div>
+              <div class="slot-overlay"><span>点击上传主图 01</span></div>
+            </div>
+            <div class="upload-slot aspect-square rounded-2xl bg-gradient-to-b from-stone-200 to-stone-100 text-slate-800 p-3 flex flex-col justify-between shadow-lg" data-slot="p6-2">
+              <img class="p6-real-image" src="/portfolio-template/assets/asset-06.jpg" alt="山野拾光植萃修护精华油平铺图" />
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-[10px] font-bold">Must-have for summer</div>
+                <div class="my-auto text-xs font-black text-sky-700">16h / 4000mAh</div>
+                <div class="text-[9px] text-slate-500">手持风扇参数型主图 2</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-stone-400 rounded-xl flex-col items-center justify-center text-slate-700"><span class="text-xs font-bold">九宫格 02 (1:1)</span></div>
+              <div class="slot-overlay"><span>点击上传主图 02</span></div>
+            </div>
+            <div class="upload-slot aspect-square rounded-2xl bg-gradient-to-b from-slate-300 to-stone-200 text-slate-800 p-3 flex flex-col justify-between text-center shadow-lg" data-slot="p6-3">
+              <img class="p6-real-image" src="/portfolio-template/assets/asset-12.jpg" alt="山野拾光植萃修护精华油生活方式图" />
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-[10px] font-bold">More than a fan</div>
+                <div class="my-auto text-xs font-bold text-slate-700">桌面循环扇特写主图 3</div>
+                <div class="text-[9px] text-slate-500">底部三图标卖点栏</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-400 rounded-xl flex-col items-center justify-center text-slate-700"><span class="text-xs font-bold">九宫格 03 (1:1)</span></div>
+              <div class="slot-overlay"><span>点击上传主图 03</span></div>
+            </div>
+          </div>
+          <div class="flex items-end justify-between text-neutral-400 pt-3 relative z-10">
+            <span contenteditable="true" class="text-[9px] font-bold tracking-wider text-neutral-300">RECORDING</span>
+            <span class="w-2.5 h-3.5 rounded-full border border-neutral-400 inline-block"></span>
+          </div>
+        </div>
+
+        <div class="inner-dark-stage rounded-[2px] p-5 flex flex-col justify-between min-h-[320px]">
+          <div class="flex items-center justify-between text-[11px] text-neutral-300 mb-3 relative z-10">
+            <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[9px]">01</span><span contenteditable="true">山野拾光｜植萃修护精华油</span></div>
+            <span contenteditable="true" class="font-semibold">GALLe</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 px-2 sm:px-6 my-auto relative z-10">
+            <div class="upload-slot aspect-[3/4] rounded-2xl bg-gradient-to-b from-lime-400 to-lime-600 text-slate-950 p-3.5 flex flex-col justify-between shadow-lg" data-slot="p6-4">
+              <img class="p6-middle-image" src="/portfolio-template/assets/asset-02.jpg" alt="山野拾光香水主视觉" />
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-xs font-black">Катушка · 4000</div>
+                <div class="my-auto mx-auto w-24 h-24 rounded-full bg-slate-900/90 text-lime-300 flex items-center justify-center text-[10px] font-bold">渔轮机械主图</div>
+                <div class="text-[10px] font-extrabold text-right">365 дней</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-900/60 rounded-xl flex-col items-center justify-center text-slate-900"><span class="text-xs font-bold">九宫格 04 (3:4 竖图)</span></div>
+              <div class="slot-overlay"><span>点击上传 3:4 竖版主图 04</span></div>
+            </div>
+            <div class="upload-slot aspect-[3/4] rounded-2xl bg-white text-slate-900 p-3.5 flex flex-col justify-between shadow-lg" data-slot="p6-5">
+              <img class="p6-middle-image" src="/portfolio-template/assets/asset-10.jpg" alt="山野拾光香水香调详情" />
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-xs font-black">DJI OSMO POCKET 3</div>
+                <div class="my-auto mx-auto w-24 h-28 rounded-xl bg-lime-300/60 border-2 border-lime-500 flex items-center justify-center text-[10px] font-bold">云台相机主图</div>
+                <div class="bg-slate-900 text-white rounded p-1 text-[9px] font-bold flex justify-around"><span>4K</span><span>F/2</span><span>180°</span></div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-400 rounded-xl flex-col items-center justify-center text-slate-700"><span class="text-xs font-bold">九宫格 05 (3:4 竖图)</span></div>
+              <div class="slot-overlay"><span>点击上传 3:4 竖版主图 05</span></div>
+            </div>
+            <div class="upload-slot aspect-[3/4] rounded-2xl bg-gradient-to-b from-white to-lime-100 text-slate-900 p-3.5 flex flex-col justify-between shadow-lg" data-slot="p6-6">
+              <img class="p6-middle-image" src="/portfolio-template/assets/asset-04.jpg" alt="山野拾光香水留香详情" />
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-xs font-black">4K-камера</div>
+                <div class="my-auto mx-auto w-24 h-28 rounded-xl bg-slate-800 text-lime-300 flex items-center justify-center text-[10px] font-bold">运动相机主图</div>
+                <div class="text-[9px] font-bold text-lime-700">120 FPS · 6.0 防抖标签</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-400 rounded-xl flex-col items-center justify-center text-slate-700"><span class="text-xs font-bold">九宫格 06 (3:4 竖图)</span></div>
+              <div class="slot-overlay"><span>点击上传 3:4 竖版主图 06</span></div>
+            </div>
+          </div>
+          <div class="flex items-end justify-between text-neutral-400 pt-3 relative z-10">
+            <span contenteditable="true" class="text-[9px] font-bold tracking-wider text-neutral-300">RECORDING</span>
+            <span class="w-2.5 h-3.5 rounded-full border border-neutral-400 inline-block"></span>
+          </div>
+        </div>
+
+        <div class="inner-dark-stage rounded-[2px] p-5 flex flex-col justify-between min-h-[320px]">
+          <div class="flex items-center justify-between text-[11px] text-neutral-300 mb-3 relative z-10">
+            <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[9px]">01</span><span contenteditable="true">山野拾光｜植萃修护精华油</span></div>
+            <span contenteditable="true" class="font-semibold">GALLe</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 px-2 sm:px-6 my-auto relative z-10">
+            <div class="upload-slot aspect-[3/4] rounded-2xl bg-white text-slate-900 p-3.5 flex flex-col justify-between shadow-lg" data-slot="p6-7">
+              <img class="p6-last-image" src="/portfolio-template/assets/asset-13.jpg" alt="草莓厚乳产品主视觉" />
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-[10px] font-bold text-orange-600">15 ЧАСОВ · 续航痛点对比</div>
+                <div class="my-auto mx-auto w-24 h-24 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold">银色耳机特写</div>
+                <div class="bg-blue-600 text-white rounded p-1 text-[9px] font-bold text-center">-10% 折扣底栏</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-400 rounded-xl flex-col items-center justify-center text-slate-700"><span class="text-xs font-bold">九宫格 07 (3:4 竖图)</span></div>
+              <div class="slot-overlay"><span>点击上传 3:4 竖版主图 07</span></div>
+            </div>
+            <div class="upload-slot aspect-[3/4] rounded-2xl bg-slate-900 text-white p-3.5 flex flex-col justify-between shadow-lg" data-slot="p6-8">
+              <img class="p6-last-image" src="/portfolio-template/assets/asset-14.jpg" alt="草莓厚乳配方详情" />
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-xs font-black text-orange-400">Очки солнцезащитные</div>
+                <div class="my-auto mx-auto w-24 h-24 rounded-xl bg-orange-600/30 border border-orange-400 flex items-center justify-center text-[10px] font-bold">模特墨镜主图</div>
+                <div class="text-[9px] text-sky-300 font-bold">UV400 · 99% 防护</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-500 rounded-xl flex-col items-center justify-center text-neutral-300"><span class="text-xs font-bold">九宫格 08 (3:4 竖图)</span></div>
+              <div class="slot-overlay"><span>点击上传 3:4 竖版主图 08</span></div>
+            </div>
+            <div class="upload-slot aspect-[3/4] rounded-2xl bg-slate-100 text-slate-900 p-3.5 flex flex-col justify-between shadow-lg" data-slot="p6-9">
+              <img class="p6-last-image" src="/portfolio-template/assets/asset-07.jpg" alt="草莓厚乳饮用场景详情" />
+              <div class="demo-visual flex-col justify-between h-full w-full">
+                <div class="text-xs font-black">ОЧКИ · 偏光运动眼镜</div>
+                <div class="my-auto mx-auto w-24 h-24 rounded-xl bg-amber-500/20 border border-amber-500 flex items-center justify-center text-[10px] font-bold">眼镜+收纳盒主图</div>
+                <div class="text-[9px] font-bold text-slate-600">+КЕЙС В ПОДАРОК</div>
+              </div>
+              <div class="wireframe-visual h-full w-full border-2 border-dashed border-slate-400 rounded-xl flex-col items-center justify-center text-slate-700"><span class="text-xs font-bold">九宫格 09 (3:4 竖图)</span></div>
+              <div class="slot-overlay"><span>点击上传 3:4 竖版主图 09</span></div>
+            </div>
+          </div>
+          <div class="flex items-end justify-between text-neutral-400 pt-3 relative z-10">
+            <span contenteditable="true" class="text-[9px] font-bold tracking-wider text-neutral-300">RECORDING</span>
+            <span class="w-2.5 h-3.5 rounded-full border border-neutral-400 inline-block"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-end justify-between text-neutral-100 mt-5 px-1">
+        <div class="flex items-center gap-2">
+          <span contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider">STUDY</span>
+          <span class="inline-block w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent"></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span contenteditable="true" class="text-xs text-neutral-300">P06 / 11 · 九宫格多尺寸主图墙</span>
+          <div class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold text-[10px] shadow">GALLe</div>
+        </div>
+      </div>
+    </article>
+    <article class="poster-board hidden-board" data-board="6.5">
+      <div class="inner-dark-stage p6-extra-page" style="background:linear-gradient(145deg,#fffaf0 0%,#eadfce 100%);padding:1.5rem;border-radius:2px;">
+        <div style="display:flex;justify-content:center;gap:1rem;align-items:flex-start;">
+          <img src="/portfolio-template/assets/asset-11.png" alt="山野拾光植萃修护精华油使用步骤详情" style="display:block;width:calc(50% - .5rem);height:auto;border-radius:.9rem;box-shadow:0 18px 40px rgba(90,65,40,.22);" />
+          <img src="/portfolio-template/assets/asset-03.png" alt="山野拾光植萃修护精华油成分与功效详情" style="display:block;width:calc(50% - .5rem);height:auto;margin-top:3rem;border-radius:.9rem;box-shadow:0 18px 40px rgba(90,65,40,.22);" />
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ==================================================================
+         PAGE 07 (Matches 7.jpg): 独立站响应式叠层（上宽屏 Hero + 右下长网页 + 左下文案）
+         ================================================================== -->
+    <article class="poster-board hidden-board" data-board="7">
+      <div class="inner-dark-stage rounded-[2px] p-6 sm:p-8 min-h-[940px] flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs text-neutral-300 mb-4 relative z-10">
+          <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[10px]">01</span><span contenteditable="true">电商设计</span></div>
+          <span contenteditable="true" class="font-semibold tracking-wider">GALLe</span>
+        </div>
+
+        <div class="relative w-full min-h-[800px] my-auto z-10 p7-layout">
+          <div class="p7-copy">
+            <div class="flex items-center justify-between text-xs mb-6"><span>07　国内电商</span><span>GALLe</span></div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold">PUPPY BAG</h2>
+            <p class="text-sm font-bold mt-2">暖暖小狗布袋杯 · 370mL 陶瓷随行杯</p>
+            <div class="space-y-4 text-[11px] leading-[1.8] mt-7">
+              <div><h3 class="font-bold mb-1">项目背景：</h3><p>面向年轻女性日常饮水、咖啡和通勤场景，打造兼具造型记忆点与实用容量的萌趣杯具。</p></div>
+              <div><h3 class="font-bold mb-1">设计灵感：</h3><p>从小狗布袋与暖系软装提取视觉语言，用奶油白、豆沙粉和珊瑚橙营造亲切的陪伴感。</p></div>
+              <div><h3 class="font-bold mb-1">视觉策略：</h3><p>突出 3D 立体捏塑、防滑杯底、陶瓷内胆和冷热适用，通过人物场景与卖点长图建立购买理由。</p></div>
+            </div>
+            <div class="flex items-center justify-between mt-7 pt-4 border-t border-[#df9b8d] text-[#a84f40]"><span class="text-xs font-semibold">思源黑体</span><div class="flex gap-2"><span class="w-6 h-4 rounded bg-[#fff8f2]"></span><span class="w-6 h-4 rounded bg-[#e88c78]"></span><span class="w-6 h-4 rounded bg-[#8b5b4b]"></span></div></div>
+          </div>
+          <div class="p7-gallery">
+            <img src="/portfolio-template/assets/asset-05.png" alt="暖暖小狗布袋杯人物场景图" />
+            <img src="/portfolio-template/assets/asset-32.jpg" alt="暖暖小狗布袋杯国内电商详情长图" />
+          </div>
+          <div class="p7-old-content">
+          <div class="upload-slot w-full rounded-3xl bg-gradient-to-br from-[#9e9d99] via-[#8c8b87] to-[#787774] text-slate-900 p-6 sm:p-8 shadow-2xl min-h-[350px] flex flex-col justify-between relative z-10" data-slot="p7-desktop-hero">
+            <div class="demo-visual flex-col justify-between h-full w-full">
+              <div class="flex items-center justify-between text-[10px] font-semibold text-slate-800">
+                <span class="text-sm font-black tracking-tight">F/ fitup</span>
+                <div class="hidden sm:flex gap-4"><span>HOW IT WORKS</span><span>ABOUT</span><span>START</span><span>FAQ</span></div>
+                <span class="px-2.5 py-1 rounded-full bg-white/40">CONTACT US</span>
+              </div>
+              <div class="grid grid-cols-12 gap-4 items-center my-4">
+                <div class="col-span-6 space-y-2">
+                  <div class="text-2xl sm:text-3xl font-black leading-tight text-slate-900">Prefect<br/>Fitness Path<br/>With <span class="text-slate-700">fitup</span></div>
+                  <p class="text-[10px] text-slate-700 max-w-xs">Unlock your full potential with tailored training programs, all crafted to help you achieve your fitness goals.</p>
+                  <div class="pt-1 flex items-center gap-3">
+                    <span class="px-3 py-1 rounded-full bg-white text-[10px] font-bold">GET STARTED</span>
+                    <span class="text-[9px] text-slate-800">Join Our Community</span>
+                  </div>
+                </div>
+                <div class="col-span-6 flex justify-center">
+                  <div class="w-40 h-40 rounded-2xl bg-slate-800/20 border border-white/40 flex items-center justify-center text-xs font-bold text-slate-800">独立站首屏人物/数据卡片区</div>
+                </div>
+              </div>
+              <div class="flex gap-8">
+                <div><div class="text-2xl font-black">500k+</div><div class="text-[9px] text-slate-700">Personalized training programs</div></div>
+                <div><div class="text-2xl font-black">10k+</div><div class="text-[9px] text-slate-700">Active members achieving results</div></div>
+              </div>
+            </div>
+            <div class="wireframe-visual min-h-[300px] border-2 border-dashed border-slate-800/60 rounded-2xl flex-col items-center justify-center text-slate-900">
+              <span class="text-sm font-bold">上方宽屏卡片：品牌独立站桌面端首屏（16:9 比例）</span>
+              <span class="text-xs mt-1">展示顶部导航栏 + 品牌大标题 + CTA 按钮 + 核心数据背书</span>
+            </div>
+            <div class="slot-overlay"><span>点击上传独立站桌面端首屏截图</span></div>
+          </div>
+
+          <div class="w-full md:w-[42%] mt-6 md:mt-16 pr-4 space-y-4 text-[11px] leading-[1.85] text-neutral-300">
+            <p contenteditable="true" class="text-justify">
+              独立站作为跨境赛道里核心的品牌载体，不再受制于平台条条框框，品牌可全权主导页面视觉与内容设计，持续沉淀私域流量、减少佣金开支。
+            </p>
+            <p contenteditable="true" class="text-justify">
+              面向海外市场完成品牌塑造与传播，加深海外用户对品牌的认同感，跳出单纯比价困境，为产品争取更高溢价，构筑可持续的海外竞争实力。
+            </p>
+          </div>
+
+          <div class="upload-slot w-full md:w-[46%] md:absolute md:right-6 md:top-[160px] z-20 rounded-3xl bg-[#dcdad7] text-slate-900 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.75)] border border-white/50 space-y-3 mt-6 md:mt-0" data-slot="p7-tall-web">
+            <div class="demo-visual flex-col space-y-3 w-full">
+              <div class="rounded-2xl bg-[#b8b6b2] p-3.5 flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-black leading-tight">Prefect Fitness Path<br/>With fitup</div>
+                  <div class="flex gap-3 mt-3 text-xs font-black"><span>500k+</span><span>10k+</span></div>
+                </div>
+                <div class="w-20 h-24 rounded-xl bg-blue-600/20 border border-white flex items-center justify-center text-[9px] font-bold text-blue-950">运动人物切图</div>
+              </div>
+              <div class="rounded-2xl bg-white/70 p-3 grid grid-cols-12 gap-2 items-center">
+                <div class="col-span-5 h-20 rounded-xl bg-sky-100 flex items-center justify-center text-[9px] font-bold text-sky-900">跑姿动态图</div>
+                <div class="col-span-7 space-y-1.5">
+                  <div class="h-3 w-24 rounded bg-slate-300"></div>
+                  <div class="grid grid-cols-3 gap-1">
+                    <div class="h-10 rounded bg-white flex items-center justify-center text-[8px]">心率</div>
+                    <div class="h-10 rounded bg-white flex items-center justify-center text-[8px]">肌群</div>
+                    <div class="h-10 rounded bg-white flex items-center justify-center text-[8px]">代谢</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-2xl bg-[#e8e6e3] p-3 flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-black">Fit your body with<br/>balanced meals</div>
+                  <div class="text-[8px] text-slate-500 mt-1">卡路里摄入与营养配比可视化</div>
+                </div>
+                <div class="w-16 h-16 rounded-full bg-slate-800 text-white flex items-center justify-center text-[9px] font-bold shadow">健康餐盘</div>
+              </div>
+              <div class="rounded-2xl bg-[#d2d0cd] p-3">
+                <div class="text-xs font-black mb-2">Find Your Perfect Yoga style</div>
+                <div class="grid grid-cols-3 gap-1.5 text-center">
+                  <div class="h-14 rounded-lg bg-white/80 flex items-center justify-center text-[8px] font-bold">YOGA 01</div>
+                  <div class="h-14 rounded-lg bg-white/80 flex items-center justify-center text-[8px] font-bold">YOGA 02</div>
+                  <div class="h-14 rounded-lg bg-white/80 flex items-center justify-center text-[8px] font-bold">YOGA 03</div>
+                  <div class="h-14 rounded-lg bg-white/80 flex items-center justify-center text-[8px] font-bold">YOGA 04</div>
+                  <div class="h-14 rounded-lg bg-white/80 flex items-center justify-center text-[8px] font-bold">YOGA 05</div>
+                  <div class="h-14 rounded-lg bg-white/80 flex items-center justify-center text-[8px] font-bold">YOGA 06</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="wireframe-visual min-h-[560px] border-2 border-dashed border-slate-600 rounded-2xl flex-col items-center justify-center text-slate-800 p-4 text-center">
+              <span class="text-sm font-bold">右下叠放长卡：独立站完整长页面截图</span>
+              <span class="text-xs mt-1">与上方桌面端首屏形成前后景深叠层 · 展示整站排版节奏</span>
+            </div>
+            <div class="slot-overlay"><span>点击上传右下完整网页长图</span></div>
+          </div>
+          </div>
+        </div>
+
+        <div class="flex items-end justify-between text-neutral-400 pt-6 relative z-10">
+          <span contenteditable="true" class="text-[10px] font-bold tracking-wider text-neutral-200">RECORDING</span>
+          <span class="w-3 h-4 rounded-full border border-neutral-400 inline-block"></span>
+        </div>
+      </div>
+
+      <div class="flex items-end justify-between text-neutral-100 mt-5 px-1">
+        <div class="flex items-center gap-2">
+          <span contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider">STUDY</span>
+          <span class="inline-block w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent"></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span contenteditable="true" class="text-xs text-neutral-300">P07 / 11 · 国内电商｜暖暖小狗布袋杯</span>
+          <div class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold text-[10px] shadow">GALLe</div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ==================================================================
+         PAGE 08 (Matches 8.jpg): 双独立站错位叠放（左上白底极简音频站 + 右下Bento生活数码站）
+         ================================================================== -->
+    <article class="poster-board hidden-board" data-board="8">
+      <div class="p8-domestic">
+        <div class="p8-header"><span>08　国内电商</span><span>GALLe</span></div>
+        <div class="p8-gallery">
+          <img src="/portfolio-template/assets/asset-33.jpg" alt="暖暖小狗布袋杯功能卖点详情" />
+          <img src="/portfolio-template/assets/asset-34.jpg" alt="暖暖小狗布袋杯场景与产品信息详情" />
+        </div>
+      </div>
+      <div class="inner-dark-stage rounded-[2px] p-6 sm:p-8 min-h-[940px] flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs text-neutral-300 mb-4 relative z-10">
+          <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[10px]">01</span><span contenteditable="true">电商设计</span></div>
+          <span contenteditable="true" class="font-semibold tracking-wider">GALLe</span>
+        </div>
+
+        <div class="relative w-full min-h-[800px] my-auto z-10 flex flex-col md:block">
+          <div class="upload-slot w-full md:w-[56%] rounded-xl overflow-hidden bg-white text-slate-900 shadow-[0_25px_60px_rgba(0,0,0,0.75)] relative z-20" data-slot="p8-web-left">
+            <div class="demo-visual flex-col w-full">
+              <div class="bg-[#e5e5e5] p-5">
+                <div class="flex justify-between text-[9px] font-bold text-slate-600 mb-4">
+                  <span>MARTUP</span><span>Products · Style · About · Support</span><span>Search</span>
+                </div>
+                <div class="grid grid-cols-12 items-center py-3">
+                  <div class="col-span-5">
+                    <div class="text-[8px] text-slate-500">Albest Studio</div>
+                    <div class="text-sm font-bold leading-snug">The Ultimate<br/>Audiophile</div>
+                  </div>
+                  <div class="col-span-3 flex justify-center">
+                    <div class="w-10 h-24 rounded bg-slate-900 text-orange-400 flex items-center justify-center text-[8px] font-bold shadow-lg">立式音响</div>
+                  </div>
+                  <div class="col-span-4 text-right">
+                    <div class="text-[8px] text-slate-500">Optimized Power</div>
+                    <div class="text-xs font-bold mt-1">$124.00</div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <div class="text-[10px] font-bold mb-2.5">Discover Our Favorites</div>
+                <div class="grid grid-cols-4 gap-2 text-center">
+                  <div class="bg-slate-100 p-2 rounded h-20 flex items-center justify-center text-[8px]">音响 01</div>
+                  <div class="bg-slate-100 p-2 rounded h-20 flex items-center justify-center text-[8px]">音响 02</div>
+                  <div class="bg-slate-100 p-2 rounded h-20 flex items-center justify-center text-[8px]">音响 03</div>
+                  <div class="bg-slate-100 p-2 rounded h-20 flex items-center justify-center text-[8px]">音响 04</div>
+                </div>
+              </div>
+              <div class="mx-5 mb-4 rounded-lg bg-slate-900 text-white p-5 flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-bold">A New Era in Electronics.<br/>A New World of Possibilities.</div>
+                  <span class="inline-block mt-2 px-2 py-0.5 border border-white/40 text-[8px]">Shop now</span>
+                </div>
+                <div class="w-24 h-12 rounded-lg bg-orange-500 text-slate-950 font-bold text-[9px] flex items-center justify-center shadow">橙色便携音响</div>
+              </div>
+              <div class="px-5 pb-5 grid grid-cols-2 gap-4 items-center">
+                <div class="text-xs font-bold">New Era in Electronics<br/>New World of Possibilities</div>
+                <div class="text-[8px] text-slate-500 leading-relaxed">Minimalist grid layout with generous whitespace and strong product photography contrast.</div>
+              </div>
+            </div>
+
+            <div class="wireframe-visual min-h-[540px] border-2 border-dashed border-slate-400 rounded-xl bg-white flex-col items-center justify-center text-slate-700 p-6 text-center">
+              <span class="text-sm font-bold">左上前景卡片：极简留白风品牌独立站长图</span>
+              <span class="text-xs mt-1">结构：灰色极简首屏 → 4栏单品陈列 → 深色横幅广告 → 底部品牌宣言</span>
+            </div>
+            <div class="slot-overlay"><span>点击上传左上独立站页面长图</span></div>
+          </div>
+
+          <div class="upload-slot w-full md:w-[56%] md:absolute md:right-0 md:top-[95px] rounded-xl overflow-hidden bg-white text-slate-900 shadow-2xl z-10 mt-6 md:mt-0" data-slot="p8-web-right">
+            <div class="demo-visual flex-col w-full">
+              <div class="grid grid-cols-3 gap-1 p-3 bg-slate-50 text-center">
+                <div class="h-20 bg-white rounded p-2 flex flex-col justify-between text-[8px]"><span>Speaker A</span><span class="font-bold">产品图 1</span></div>
+                <div class="h-20 bg-white rounded p-2 flex flex-col justify-between text-[8px]"><span>Speaker B</span><span class="font-bold">产品图 2</span></div>
+                <div class="h-20 bg-white rounded p-2 flex flex-col justify-between text-[8px]"><span>Speaker C</span><span class="font-bold">产品图 3</span></div>
+              </div>
+              <div class="grid grid-cols-2">
+                <div class="h-32 bg-slate-700 text-white p-3 flex flex-col justify-center">
+                  <span class="text-[10px] font-bold">Enabling Flexible Electronics Products</span>
+                </div>
+                <div class="h-32 bg-slate-100 p-3 flex flex-col justify-between">
+                  <span class="text-[9px] font-bold">Multi-function Home Bluetooth Audio</span>
+                  <span class="text-[9px] font-bold text-right">$326.00</span>
+                </div>
+                <div class="h-32 bg-slate-100 p-3 flex flex-col justify-between">
+                  <span class="text-[9px] font-bold">Wireless Device</span>
+                  <span class="text-[9px] font-bold text-right">$247.00</span>
+                </div>
+                <div class="h-32 bg-slate-800 text-white p-3 flex flex-col justify-center items-end text-right">
+                  <span class="text-[10px] font-bold">No Wires.<br/>No Stopping You.</span>
+                </div>
+              </div>
+              <div class="p-4 text-center bg-white">
+                <div class="text-xs font-bold">The Playfully Pastel Permafrost<br/>MINISO Collection</div>
+                <div class="w-40 h-10 mx-auto mt-2 rounded-full bg-slate-200 flex items-center justify-center text-[8px] text-slate-600">浅绿产品特写位</div>
+              </div>
+              <div class="bg-[#111214] text-neutral-400 p-4 grid grid-cols-4 gap-2 text-[8px]">
+                <div class="text-white font-bold">About us<br/>Design Services<br/>Business</div>
+                <div>Get in touch<br/>Upland, CA</div>
+                <div>Shop<br/>Speakers<br/>Audio</div>
+                <div>Service<br/>Shipping</div>
+              </div>
+            </div>
+
+            <div class="wireframe-visual min-h-[580px] border-2 border-dashed border-slate-400 rounded-xl bg-slate-100 flex-col items-center justify-center text-slate-700 p-6 text-center">
+              <span class="text-sm font-bold">右下后景卡片：棋盘格 Bento 布局独立站长图</span>
+              <span class="text-xs mt-1">结构：顶部三栏橱窗 → 2×2 图文棋盘格 → 居中单品横幅 → 深色页脚</span>
+            </div>
+            <div class="slot-overlay"><span>点击上传右下独立站页面长图</span></div>
+          </div>
+        </div>
+
+        <div class="flex items-end justify-between text-neutral-400 pt-6 relative z-10">
+          <span contenteditable="true" class="text-[10px] font-bold tracking-wider text-neutral-200">RECORDING</span>
+          <span class="w-3 h-4 rounded-full border border-neutral-400 inline-block"></span>
+        </div>
+      </div>
+
+      <div class="flex items-end justify-between text-neutral-100 mt-5 px-1">
+        <div class="flex items-center gap-2">
+          <span contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider">STUDY</span>
+          <span class="inline-block w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent"></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span contenteditable="true" class="text-xs text-neutral-300">P08 / 11 · 双独立站错位叠层排版</span>
+          <div class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold text-[10px] shadow">GALLe</div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ==================================================================
+         PAGE 09 (Matches 9.jpg): 双长图对称并排 — 美妆护肤类（冰蓝补水霜 + 暖米色防晒霜）
+         ================================================================== -->
+    <article class="poster-board hidden-board" data-board="9">
+      <div class="p9-domestic">
+        <div class="p9-header"><span>09　国内电商</span><span>GALLe</span></div>
+        <div class="p9-gallery">
+          <img src="/portfolio-template/assets/asset-15.jpg" alt="茄子马克杯创意造型详情" />
+          <img src="/portfolio-template/assets/asset-18.jpg" alt="茄子马克杯材质与参数详情" />
+        </div>
+      </div>
+      <div class="inner-dark-stage rounded-[2px] p-6 sm:p-8 min-h-[940px] flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs text-neutral-300 mb-4 relative z-10">
+          <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[10px]">01</span><span contenteditable="true">电商设计</span></div>
+          <span contenteditable="true" class="font-semibold tracking-wider">GALLe</span>
+        </div>
+
+        <div class="max-w-[640px] w-full mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 my-auto relative z-10">
+          <div class="upload-slot rounded-[26px] overflow-hidden bg-white text-slate-900 shadow-2xl flex flex-col justify-between min-h-[780px]" data-slot="p9-left">
+            <div class="demo-visual flex-col justify-between h-full w-full">
+              <div class="bg-gradient-to-b from-[#a7c0d8] to-[#dbe7f2] pt-6 pb-5 px-4 text-center">
+                <div contenteditable="true" class="text-[10px] font-bold text-slate-700">속건조 꽉 잡아 차오르는</div>
+                <div contenteditable="true" class="text-lg font-black text-slate-900 mt-0.5">수분 볼륨 · 水润保湿霜</div>
+                <div class="mt-4 mx-auto w-28 h-40 rounded-2xl bg-white/60 border border-white flex items-center justify-center text-xs font-bold text-sky-900 shadow">
+                  软管产品正反面立图
+                </div>
+              </div>
+              <div class="p-4 text-center space-y-3">
+                <div contenteditable="true" class="text-xs font-bold text-sky-800">히알루론산 워터 플럼핑 수분 크림</div>
+                <div class="grid grid-cols-3 divide-x divide-slate-200 text-[9px] text-slate-600 py-2 border-y border-slate-100">
+                  <div>深层补水<br/>케어</div>
+                  <div>屏障修护<br/>즉각 개선</div>
+                  <div>水油平衡<br/>밸런스</div>
+                </div>
+                <div class="pt-2">
+                  <div contenteditable="true" class="text-xs font-bold text-slate-800">이런 분들께 추천해요</div>
+                  <p contenteditable="true" class="text-[9px] text-slate-500 mt-1 leading-relaxed">针对外油内干、换季敏感泛红肌肤的痛点提问模块</p>
+                </div>
+              </div>
+              <div class="h-24 bg-gradient-to-r from-sky-200 via-cyan-100 to-sky-300 flex items-center justify-center text-xs font-bold text-sky-900">
+                水分子微距透明质感横幅
+              </div>
+              <div class="p-4 text-center bg-white">
+                <div contenteditable="true" class="text-xs font-bold mb-2">피부 속 수분 밀도를 높여</div>
+                <div class="flex justify-center -space-x-3">
+                  <div class="w-20 h-20 rounded-full bg-sky-100/80 flex items-center justify-center text-[9px] font-bold text-slate-700">内部锁水</div>
+                  <div class="w-20 h-20 rounded-full bg-sky-200/70 flex items-center justify-center text-[9px] font-bold text-slate-700">弹润光泽</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="wireframe-visual min-h-[780px] border-2 border-dashed border-sky-400 rounded-[26px] bg-sky-50 flex-col items-center justify-center text-slate-700 p-4 text-center">
+              <span class="text-sm font-bold">左列圆角长图位（美妆护肤清透风）</span>
+              <span class="text-xs mt-1">结构：冰蓝首屏产品立图 → 三栏核心功效 → 痛点提问 → 水润微距横幅 → 底部双圆总结</span>
+            </div>
+            <div class="slot-overlay"><span>点击上传左侧详情页长图</span></div>
+          </div>
+
+          <div class="upload-slot rounded-[26px] overflow-hidden bg-[#f7f5f0] text-slate-900 shadow-2xl flex flex-col justify-between min-h-[780px]" data-slot="p9-right">
+            <div class="demo-visual flex-col justify-between h-full w-full">
+              <div class="bg-[#d6cfc2] pt-6 pb-5 px-4 text-center">
+                <div contenteditable="true" class="text-sm font-semibold tracking-widest text-stone-800">REAL SUN CREAM</div>
+                <div contenteditable="true" class="text-[9px] text-orange-600 font-bold">SPF50+ PA++++</div>
+                <div class="mt-4 mx-auto w-28 h-40 rounded-2xl bg-[#efeae1] border border-white/60 flex items-center justify-center text-xs font-bold text-stone-700 shadow">
+                  防晒霜岩石底座摆拍图
+                </div>
+              </div>
+              <div class="p-5 text-left space-y-2 bg-white">
+                <div class="text-[9px] text-stone-400">내가 그토록 찾던 진짜 선케어</div>
+                <div contenteditable="true" class="text-sm font-black text-stone-900">휘게 리얼 선크림</div>
+                <div class="text-[8px] text-orange-500 font-bold">SPF50+ PA++++</div>
+                <p contenteditable="true" class="text-[10px] text-stone-600 leading-relaxed pt-2">
+                  자외선 차단 효과, 전문가들과 더욱 고민하고 진정성 있게 해결하였습니다. 极简留白杂志感文案排版。
+                </p>
+              </div>
+              <div class="h-44 bg-gradient-to-b from-[#a7c2d6] to-[#d6cbbd] flex items-center justify-center text-xs font-bold text-stone-800">
+                手部握持防晒霜蓝天实拍图
+              </div>
+              <div class="p-5 text-left bg-[#f3f0ea]">
+                <div contenteditable="true" class="text-xs font-black text-stone-900">확실히 검증된 자외선 차단력</div>
+                <div class="text-[10px] text-stone-600 mt-0.5">안심하고 사용하는 휘게 리얼 선크림</div>
+                <div contenteditable="true" class="text-xs font-black text-orange-600 mt-3">SPF 55.7, PA++++</div>
+              </div>
+            </div>
+
+            <div class="wireframe-visual min-h-[780px] border-2 border-dashed border-stone-400 rounded-[26px] bg-stone-100 flex-col items-center justify-center text-stone-700 p-4 text-center">
+              <span class="text-sm font-bold">右列圆角长图位（极简杂志感护肤风）</span>
+              <span class="text-xs mt-1">结构：暖米色道具摆拍首屏 → 大留白左对齐文案 → 手部手持实拍 → 底部SPF实测数据</span>
+            </div>
+            <div class="slot-overlay"><span>点击上传右侧详情页长图</span></div>
+          </div>
+        </div>
+
+        <div class="flex items-end justify-between text-neutral-400 pt-6 relative z-10">
+          <span contenteditable="true" class="text-[10px] font-bold tracking-wider text-neutral-200">RECORDING</span>
+          <span class="w-3 h-4 rounded-full border border-neutral-400 inline-block"></span>
+        </div>
+      </div>
+
+      <div class="flex items-end justify-between text-neutral-100 mt-5 px-1">
+        <div class="flex items-center gap-2">
+          <span contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider">STUDY</span>
+          <span class="inline-block w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent"></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span contenteditable="true" class="text-xs text-neutral-300">P09 / 11 · 双长图并排展示（美妆个护）</span>
+          <div class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold text-[10px] shadow">GALLe</div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ==================================================================
+         PAGE 10 (Matches 10.jpg): 双长图对称并排 — 生活家电与五金家居（加湿器 + 橱柜支撑件）
+         ================================================================== -->
+    <article class="poster-board hidden-board" data-board="10">
+      <div class="p10-domestic">
+        <div class="p10-header"><span>10　国内电商</span><span>GALLe</span></div>
+        <div class="p10-gallery">
+          <img src="/portfolio-template/assets/asset-16.jpg" alt="猫咪磨牙抱踢鱼柔软亲肤详情" />
+          <img src="/portfolio-template/assets/asset-19.jpg" alt="猫咪抱踢鱼尺寸材质详情" />
+        </div>
+      </div>
+      <div class="inner-dark-stage rounded-[2px] p-6 sm:p-8 min-h-[940px] flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs text-neutral-300 mb-4 relative z-10">
+          <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[9px]">01</span><span contenteditable="true">电商设计</span></div>
+          <span contenteditable="true" class="font-semibold tracking-wider">GALLe</span>
+        </div>
+
+        <div class="max-w-[640px] w-full mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 my-auto relative z-10">
+          <div class="upload-slot rounded-[26px] overflow-hidden bg-[#9c8669] text-white shadow-2xl flex flex-col justify-between min-h-[780px]" data-slot="p10-left">
+            <div class="demo-visual flex-col justify-between h-full w-full">
+              <div class="bg-gradient-to-b from-[#d8c7b0] to-[#b59c7e] pt-6 pb-5 px-4 text-center text-stone-900">
+                <div contenteditable="true" class="text-base font-black leading-tight">Fast Warm Mist<br/>Steam Humidifier</div>
+                <div class="text-[9px] text-stone-700 mt-1">Pure | Warm | Fresh</div>
+                <div class="mt-4 mx-auto w-24 h-28 rounded-2xl bg-white shadow-lg flex items-center justify-center text-[10px] font-bold text-stone-700">
+                  桌面加湿器蒸汽实拍
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <div contenteditable="true" class="text-xs font-extrabold mb-3">The Benefits of Warm<br/>Mist Steam Humidifier</div>
+                <div class="grid grid-cols-3 gap-2">
+                  <div>
+                    <div class="h-24 rounded-2xl bg-stone-200 text-stone-800 flex items-center justify-center text-[9px] font-bold">痛点人物 1</div>
+                    <div class="text-[8px] mt-1">Sore throat</div>
+                  </div>
+                  <div>
+                    <div class="h-24 rounded-2xl bg-stone-200 text-stone-800 flex items-center justify-center text-[9px] font-bold">痛点人物 2</div>
+                    <div class="text-[8px] mt-1">Rhinitis</div>
+                  </div>
+                  <div>
+                    <div class="h-24 rounded-2xl bg-stone-200 text-stone-800 flex items-center justify-center text-[9px] font-bold">痛点人物 3</div>
+                    <div class="text-[8px] mt-1">Dry skin</div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-3 rounded-2xl bg-[#f7c888] text-stone-900 p-4 grid grid-cols-2 gap-3 text-center">
+                <div class="flex flex-col items-center"><div class="w-10 h-10 rounded-full border border-white/80 bg-amber-300/50 flex items-center justify-center text-[9px] font-bold">99.9%</div><span class="text-[8px] mt-1">Germ-Free</span></div>
+                <div class="flex flex-col items-center"><div class="w-10 h-10 rounded-full border border-white/80 bg-amber-300/50 flex items-center justify-center text-[9px] font-bold">10m</div><span class="text-[8px] mt-1">Fast Steam</span></div>
+                <div class="flex flex-col items-center"><div class="w-10 h-10 rounded-full border border-white/80 bg-amber-300/50 flex items-center justify-center text-[9px] font-bold">Safe</div><span class="text-[8px] mt-1">Dry-Burn Safe</span></div>
+                <div class="flex flex-col items-center"><div class="w-10 h-10 rounded-full border border-white/80 bg-amber-300/50 flex items-center justify-center text-[9px] font-bold">Warm</div><span class="text-[8px] mt-1">Warm Steam</span></div>
+                <div class="flex flex-col items-center"><div class="w-10 h-10 rounded-full border border-white/80 bg-amber-300/50 flex items-center justify-center text-[9px] font-bold">Top</div><span class="text-[8px] mt-1">Top Fill</span></div>
+                <div class="flex flex-col items-center"><div class="w-10 h-10 rounded-full border border-white/80 bg-amber-300/50 flex items-center justify-center text-[9px] font-bold">Clean</div><span class="text-[8px] mt-1">Easy Clean</span></div>
+              </div>
+            </div>
+
+            <div class="wireframe-visual min-h-[780px] border-2 border-dashed border-amber-300 rounded-[26px] bg-stone-800 flex-col items-center justify-center text-amber-100 p-4 text-center">
+              <span class="text-sm font-bold">左列长图位（暖调生活小家电）</span>
+              <span class="text-xs mt-1">结构：木纹桌面首屏 → 3栏人物痛点胶囊图 → 底部6宫格圆形图标卖点卡</span>
+            </div>
+            <div class="slot-overlay"><span>点击上传左侧详情页长图</span></div>
+          </div>
+
+          <div class="upload-slot rounded-[26px] overflow-hidden bg-[#d8c9b8] text-slate-900 shadow-2xl flex flex-col justify-between min-h-[780px]" data-slot="p10-right">
+            <div class="demo-visual flex-col justify-between h-full w-full">
+              <div class="bg-gradient-to-b from-[#b89f82] to-[#dfd3c3] pt-6 pb-5 px-4 text-center text-white">
+                <div class="text-[10px] font-bold tracking-widest">GARIS</div>
+                <div contenteditable="true" class="text-xs font-extrabold mt-1">HEAVY-DUTY UP-AND-OVER<br/>DOOR SUPPORTS</div>
+                <div class="mt-4 space-y-2 text-left px-3">
+                  <div class="h-10 rounded-lg bg-white text-stone-800 px-3 flex items-center justify-between text-[9px] font-bold shadow"><span>雅致白款</span><span>五金铰链臂</span></div>
+                  <div class="h-10 rounded-lg bg-stone-900 text-white px-3 flex items-center justify-between text-[9px] font-bold shadow"><span>曜石黑款</span><span>五金铰链臂</span></div>
+                  <div class="h-10 rounded-lg bg-stone-600 text-white px-3 flex items-center justify-between text-[9px] font-bold shadow"><span>深空灰款</span><span>五金铰链臂</span></div>
+                </div>
+              </div>
+              <div class="p-4 bg-[#e8dfd5] flex-1 flex flex-col justify-between relative">
+                <div>
+                  <div class="text-[9px] font-bold text-stone-500">GARIS</div>
+                  <div contenteditable="true" class="text-xs font-black text-stone-900 mt-0.5">DISPLAY AT ANY ANGLE<br/>WHEN HOVERING</div>
+                </div>
+                <div class="my-auto relative h-48 rounded-xl bg-[#cbb299] p-3 flex items-center">
+                  <div class="w-28 h-28 rounded-r-full bg-orange-600/85 text-white flex flex-col justify-center pl-3 shadow-lg">
+                    <span contenteditable="true" class="text-sm font-black">35°-100°</span>
+                    <span class="text-[8px]">Hover at any angle</span>
+                  </div>
+                  <div class="ml-auto text-[10px] font-bold text-stone-800 pr-2">橱柜门悬停实景切图</div>
+                </div>
+                <div class="text-[9px] font-bold text-stone-600">GARIS · 厨房台面实景底栏</div>
+              </div>
+            </div>
+
+            <div class="wireframe-visual min-h-[780px] border-2 border-dashed border-stone-500 rounded-[26px] bg-stone-200 flex-col items-center justify-center text-stone-800 p-4 text-center">
+              <span class="text-sm font-bold">右列长图位（家居五金/工业结构件）</span>
+              <span class="text-xs mt-1">结构：三色产品阶梯陈列首屏 → 橱柜安装实景 + 35°-100° 橙色扇形角度可视化叠加层</span>
+            </div>
+            <div class="slot-overlay"><span>点击上传右侧详情页长图</span></div>
+          </div>
+        </div>
+
+        <div class="flex items-end justify-between text-neutral-400 pt-6 relative z-10">
+          <span contenteditable="true" class="text-[10px] font-bold tracking-wider text-neutral-200">RECORDING</span>
+          <span class="w-3 h-4 rounded-full border border-neutral-400 inline-block"></span>
+        </div>
+      </div>
+
+      <div class="flex items-end justify-between text-neutral-100 mt-5 px-1">
+        <div class="flex items-center gap-2">
+          <span contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider">STUDY</span>
+          <span class="inline-block w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent"></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span contenteditable="true" class="text-xs text-neutral-300">P10 / 11 · 双长图并排展示（家电与五金）</span>
+          <div class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold text-[10px] shadow">GALLe</div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ==================================================================
+         PAGE 11 (Matches 11.jpg): 双长图对称并排 — 品质小家电（除湿机 + 台式迷你洗衣机）
+         ================================================================== -->
+    <article class="poster-board hidden-board" data-board="11">
+      <div class="p11-domestic">
+        <div class="p11-header"><span>11　国内电商</span><span>GALLe</span></div>
+        <div class="p11-gallery">
+          <img src="/portfolio-template/assets/asset-17.jpg" alt="翘尾猫桌面吸尘器首屏与功能详情" />
+          <img src="/portfolio-template/assets/asset-20.jpg" alt="翘尾猫桌面吸尘器配件与包装详情" />
+        </div>
+      </div>
+      <div class="inner-dark-stage rounded-[2px] p-6 sm:p-8 min-h-[940px] flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs text-neutral-300 mb-4 relative z-10">
+          <div class="flex items-center gap-1.5"><span class="px-1 border border-neutral-400 rounded-[2px] text-[10px]">01</span><span contenteditable="true">电商设计</span></div>
+          <span contenteditable="true" class="font-semibold tracking-wider">GALLe</span>
+        </div>
+
+        <div class="max-w-[640px] w-full mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 my-auto relative z-10">
+          <div class="upload-slot rounded-[26px] overflow-hidden bg-[#efe8de] text-slate-900 shadow-2xl flex flex-col justify-between min-h-[780px]" data-slot="p11-left">
+            <div class="demo-visual flex-col justify-between h-full w-full">
+              <div class="bg-gradient-to-b from-[#e5ddd0] to-[#cbbca8] pt-5 pb-4 px-4 text-center">
+                <span class="px-2 py-0.5 rounded-full bg-orange-500 text-white text-[8px] font-bold">节能除湿</span>
+                <div contenteditable="true" class="text-base font-black text-stone-900 mt-1">小身材 · 高效率</div>
+                <div class="text-[8px] text-stone-600">全屋干爽双核除湿机</div>
+                <div class="mt-3 mx-auto w-24 h-28 rounded-xl bg-white shadow-md flex items-center justify-center text-[10px] font-bold text-stone-700">
+                  客厅沙发旁除湿机实拍
+                </div>
+              </div>
+              <div class="p-3.5 text-center">
+                <div contenteditable="true" class="text-xs font-extrabold text-stone-800 mb-2">您关注的我都有</div>
+                <div class="grid grid-cols-2 gap-1.5 text-left text-[8px]">
+                  <div class="h-16 rounded-lg bg-stone-800 text-white p-2 font-bold">出色降噪系统<br/><span class="font-normal text-stone-300">整夜安睡不打扰</span></div>
+                  <div class="h-16 rounded-lg bg-white p-2 font-bold">12L/天除湿量<br/><span class="font-normal text-stone-500">全屋立体循环</span></div>
+                  <div class="h-16 rounded-lg bg-white p-2 font-bold">全触控大面板<br/><span class="font-normal text-stone-500">老人一按即懂</span></div>
+                  <div class="h-16 rounded-lg bg-amber-100 p-2 font-bold">高精度湿度传感<br/><span class="font-normal text-stone-600">三色灯环实时反馈</span></div>
+                  <div class="h-16 rounded-lg bg-white p-2 font-bold">滤网清洁提醒<br/><span class="font-normal text-stone-500">水洗循环使用</span></div>
+                  <div class="h-16 rounded-lg bg-white p-2 font-bold">8大安全防护<br/><span class="font-normal text-stone-500">水满自动停机</span></div>
+                </div>
+              </div>
+              <div class="p-4 bg-gradient-to-b from-[#f5efe6] to-[#d8e6c3]">
+                <div contenteditable="true" class="text-lg font-black text-orange-600">12L/天</div>
+                <div contenteditable="true" class="text-xs font-bold text-stone-800">小空间除湿必备</div>
+                <div class="mt-2 h-16 rounded-xl bg-white/80 flex items-center justify-center text-[9px] font-bold text-stone-600">
+                  微缩房屋立体剖面除湿示意图
+                </div>
+              </div>
+            </div>
+
+            <div class="wireframe-visual min-h-[780px] border-2 border-dashed border-stone-400 rounded-[26px] bg-stone-100 flex-col items-center justify-center text-stone-700 p-4 text-center">
+              <span class="text-sm font-bold">左列长图位（国潮/天猫风环境家电）</span>
+              <span class="text-xs mt-1">结构：客厅实景首屏 → 6宫格图文卖点矩阵 → 12L/天房屋剖面底部展示</span>
+            </div>
+            <div class="slot-overlay"><span>点击上传左侧详情页长图</span></div>
+          </div>
+
+          <div class="upload-slot rounded-[26px] overflow-hidden bg-white text-slate-900 shadow-2xl flex flex-col justify-between min-h-[780px]" data-slot="p11-right">
+            <div class="demo-visual flex-col justify-between h-full w-full">
+              <div class="bg-gradient-to-b from-[#d8b493] to-[#f2decb] pt-5 pb-4 px-4 text-center">
+                <div contenteditable="true" class="text-sm font-black text-stone-900">小身材大能耐 · 台洗小巨人</div>
+                <div class="text-[8px] text-stone-700 mt-0.5">#大宇DD直驱2.0# 1.6kg全自动台式洗衣机</div>
+                <div class="mt-3 mx-auto w-24 h-24 rounded-2xl bg-white shadow flex items-center justify-center text-[10px] font-bold text-stone-700">
+                  木质台面迷你洗衣机实拍
+                </div>
+                <div class="mt-3 bg-[#eb9878] text-white rounded-xl p-2 grid grid-cols-3 gap-1 text-[8px] font-bold">
+                  <div>全新DD<br/>直驱变频</div>
+                  <div>内筒扩容<br/>24%</div>
+                  <div>1.6kg<br/>大容量</div>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <div contenteditable="true" class="text-xs font-black text-stone-900 mb-2">三大突破性革新 · 跃身台洗研创使者</div>
+                <div class="rounded-2xl bg-[#fdf4ef] border border-orange-200 p-3 grid grid-cols-2 gap-2 text-[9px]">
+                  <div class="bg-white rounded-xl p-2 shadow-sm">
+                    <div class="font-black text-orange-600">第三代 台式洗衣机</div>
+                    <div class="mt-1 text-[8px] text-stone-600">DD直驱变频电机 2.0<br/>黄金容积比 · 1.6kg大容量</div>
+                  </div>
+                  <div class="bg-stone-100 rounded-xl p-2 text-stone-500">
+                    <div class="font-bold">第一、二代 台式洗衣机</div>
+                    <div class="mt-1 text-[8px]">传统皮带电机<br/>体积偏大 · 容量受限</div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4 text-center bg-white border-t border-stone-100">
+                <span class="text-xs font-black text-orange-400">01</span>
+                <div contenteditable="true" class="text-xs font-black text-stone-900">小小身躯 · 蕴藏大能耐</div>
+                <p class="text-[8px] text-stone-500 mt-1">掌控扩容新技术，与同体积台洗相比洗涤容量显著提升</p>
+              </div>
+            </div>
+
+            <div class="wireframe-visual min-h-[780px] border-2 border-dashed border-orange-300 rounded-[26px] bg-orange-50/40 flex-col items-center justify-center text-stone-700 p-4 text-center">
+              <span class="text-sm font-bold">右列长图位（精致母婴/迷你家电风）</span>
+              <span class="text-xs mt-1">结构：暖调木台首屏+3图标胶囊 → 新旧代际对比表格卡 → 01编号章节底栏</span>
+            </div>
+            <div class="slot-overlay"><span>点击上传右侧详情页长图</span></div>
+          </div>
+        </div>
+
+        <div class="flex items-end justify-between text-neutral-400 pt-6 relative z-10">
+          <span contenteditable="true" class="text-[10px] font-bold tracking-wider text-neutral-200">RECORDING</span>
+          <span class="w-3 h-4 rounded-full border border-neutral-400 inline-block"></span>
+        </div>
+      </div>
+
+      <div class="flex items-end justify-between text-neutral-100 mt-5 px-1">
+        <div class="flex items-center gap-2">
+          <span contenteditable="true" class="text-2xl sm:text-3xl font-extrabold tracking-wider">STUDY</span>
+          <span class="inline-block w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent"></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <span contenteditable="true" class="text-xs text-neutral-300">P11 / 11 · 双长图并排展示（品质小家电）</span>
+          <div class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold text-[10px] shadow">GALLe</div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const boardsContainer = document.getElementById('boardsContainer');
+      const boards = Array.from(document.querySelectorAll('.poster-board'));
+      const pageTabs = Array.from(document.querySelectorAll('.page-tab'));
+      const currentPageDescription = document.getElementById('currentPageDescription');
+
+      const btnViewSingle = document.getElementById('btnViewSingle');
+      const btnViewStream = document.getElementById('btnViewStream');
+      const btnViewGrid = document.getElementById('btnViewGrid');
+
+      const btnModeDemo = document.getElementById('btnModeDemo');
+      const btnModeWireframe = document.getElementById('btnModeWireframe');
+      const btnCleanPreview = document.getElementById('btnCleanPreview');
+      const btnResetAll = document.getElementById('btnResetAll');
+      const btnPrintAll = document.getElementById('btnPrintAll');
+
+      const btnPrevPage = document.getElementById('btnPrevPage');
+      const btnNextPage = document.getElementById('btnNextPage');
+      const globalSlotFileInput = document.getElementById('globalSlotFileInput');
+
+      let currentPage = 1;
+      let currentViewMode = 'single';
+      let activeUploadSlot = null;
+
+      const PAGE_TITLES = {
+        1: '第 1 页（叠层左卡项目说明 + 右侧详情页长图 · 雾霾蓝科技风）',
+        2: '第 2 页（左栏项目说明 + 右侧双长图错位叠放 · 暗黑红橙电竞风）',
+        3: '第 3 页（角色袜主视觉大图）',
+        4: '第 4 页（宠物甜甜圈恢复圈项目介绍与详情图）',
+        5: '第 5 页（三屏分栏画板：跨境电商主图说明 + 7 张 1:1 主图矩阵）',
+        6: '第 6 页（三屏九宫格主图墙：上屏 1:1 场景主图 + 中下屏 3:4 竖版卖点主图）',
+        7: '第 7 页（国内电商｜暖暖小狗布袋杯人物场景与详情长图）',
+        8: '第 8 页（双独立站错位叠放：左上极简留白官网 + 右下棋盘格 Bento 官网）',
+        9: '第 9 页（双长图对称并排对比 · 美妆护肤清透风 vs 极简防晒风）',
+        10: '第 10 页（双长图对称并排对比 · 暖雾加湿器 vs 家居五金悬停铰链）',
+        11: '第 11 页（双长图对称并排对比 · 静音除湿机 vs 迷你台式洗衣机）'
+      };
+
+      function updateViewModeUI() {
+        boardsContainer.classList.remove('view-single', 'view-stream', 'view-grid');
+        btnViewSingle.className = 'px-2.5 py-1 rounded-md font-medium transition ' + (currentViewMode === 'single' ? 'bg-sky-600 text-white' : 'text-neutral-300 hover:text-white');
+        btnViewStream.className = 'px-2.5 py-1 rounded-md font-medium transition ' + (currentViewMode === 'stream' ? 'bg-sky-600 text-white' : 'text-neutral-300 hover:text-white');
+        btnViewGrid.className = 'px-2.5 py-1 rounded-md font-medium transition ' + (currentViewMode === 'grid' ? 'bg-sky-600 text-white' : 'text-neutral-300 hover:text-white');
+
+        if (currentViewMode === 'single') {
+          boardsContainer.classList.add('view-single');
+          boards.forEach(function (b) {
+            const p = parseInt(b.getAttribute('data-board'), 10);
+            b.classList.toggle('hidden-board', p !== currentPage);
+          });
+        } else if (currentViewMode === 'stream') {
+          boardsContainer.classList.add('view-stream');
+          boards.forEach(function (b) {
+            b.classList.remove('hidden-board');
+          });
+        } else {
+          boardsContainer.classList.add('view-grid');
+          boards.forEach(function (b) {
+            b.classList.remove('hidden-board');
+          });
+        }
+      }
+
+      function selectPage(pageNum) {
+        currentPage = pageNum;
+        pageTabs.forEach(function (tab) {
+          const p = parseInt(tab.getAttribute('data-page'), 10);
+          if (p === currentPage) {
+            tab.className = 'page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-semibold bg-sky-500 text-slate-950 transition';
+          } else {
+            tab.className = 'page-tab shrink-0 px-2.5 py-1 rounded text-[11px] font-medium bg-neutral-800/90 text-neutral-300 hover:text-white transition';
+          }
+        });
+
+        currentPageDescription.innerHTML = '当前展示：<strong>' + (PAGE_TITLES[currentPage] || '') + '</strong> — 点击文字直接改，点击图框上传替换。';
+
+        if (currentViewMode === 'single') {
+          updateViewModeUI();
+        } else {
+          const targetBoard = document.querySelector('.poster-board[data-board="' + currentPage + '"]');
+          if (targetBoard) {
+            targetBoard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      }
+
+      pageTabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          const p = parseInt(tab.getAttribute('data-page'), 10);
+          selectPage(p);
+        });
+      });
+
+      btnPrevPage.addEventListener('click', function () {
+        const prev = currentPage > 1 ? currentPage - 1 : 11;
+        selectPage(prev);
+      });
+
+      btnNextPage.addEventListener('click', function () {
+        const next = currentPage < 11 ? currentPage + 1 : 1;
+        selectPage(next);
+      });
+
+      btnViewSingle.addEventListener('click', function () {
+        currentViewMode = 'single';
+        updateViewModeUI();
+      });
+
+      btnViewStream.addEventListener('click', function () {
+        currentViewMode = 'stream';
+        updateViewModeUI();
+      });
+
+      btnViewGrid.addEventListener('click', function () {
+        currentViewMode = 'grid';
+        updateViewModeUI();
+      });
+
+      btnModeDemo.addEventListener('click', function () {
+        body.classList.remove('mode-wireframe');
+        body.classList.add('mode-demo');
+        btnModeDemo.className = 'px-2.5 py-1 rounded-md font-medium transition bg-emerald-600 text-white';
+        btnModeWireframe.className = 'px-2.5 py-1 rounded-md font-medium transition text-neutral-300 hover:text-white';
+      });
+
+      btnModeWireframe.addEventListener('click', function () {
+        body.classList.remove('mode-demo');
+        body.classList.add('mode-wireframe');
+        btnModeWireframe.className = 'px-2.5 py-1 rounded-md font-medium transition bg-emerald-600 text-white';
+        btnModeDemo.className = 'px-2.5 py-1 rounded-md font-medium transition text-neutral-300 hover:text-white';
+      });
+
+      btnCleanPreview.addEventListener('click', function () {
+        const isClean = body.classList.toggle('preview-clean');
+        btnCleanPreview.textContent = isClean ? '退出预览' : '纯净预览';
+        btnCleanPreview.className = isClean
+          ? 'px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-amber-500 text-slate-950 transition'
+          : 'px-2.5 py-1.5 text-xs font-medium rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 transition';
+      });
+
+      document.querySelectorAll('.upload-slot').forEach(function (slot) {
+        slot.addEventListener('click', function (e) {
+          if (body.classList.contains('preview-clean')) return;
+          if (e.target && e.target.closest('[contenteditable="true"]')) return;
+          activeUploadSlot = slot;
+          globalSlotFileInput.value = '';
+          globalSlotFileInput.click();
+        });
+      });
+
+      globalSlotFileInput.addEventListener('change', function (e) {
+        const file = e.target.files && e.target.files[0];
+        if (!file || !activeUploadSlot) return;
+        const reader = new FileReader();
+        reader.onload = function (ev) {
+          let img = activeUploadSlot.querySelector('.slot-custom-img');
+          if (!img) {
+            img = document.createElement('img');
+            img.className = 'slot-custom-img';
+            activeUploadSlot.appendChild(img);
+          }
+          img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+
+      btnResetAll.addEventListener('click', function () {
+        document.querySelectorAll('.slot-custom-img').forEach(function (img) {
+          img.remove();
+        });
+      });
+
+      btnPrintAll.addEventListener('click', function () {
+        window.print();
+      });
+    })();
+  </script>  <script id="consistent-corner-labels-runtime-v2">
+    (() => {
+      const data={ '1':['01','跨境电商'], '2':['02','跨境电商'], '3':['03','跨境电商'], '4':['04','跨境电商'], '5':['05','跨境电商'], '6':['06','国内电商'], '6.5':['07','国内电商'], '7':['08','国内电商'], '8':['09','国内电商'], '9':['10','国内电商'], '10':['11','国内电商'], '11':['12','国内电商'] };
+      Object.entries(data).forEach(([board,[number,category]])=>{
+        const article=document.querySelector('.poster-board[data-board="'+board+'"]'); if(!article)return;
+        const stage=article.querySelector('.inner-dark-stage')||article;
+        if (board === '6') {
+          const productNames=['山野拾光｜植萃修护精华油','山野拾光｜木质馥奇香水','Mochi Lab｜草莓燕麦厚乳'];
+          const panels=Array.from(article.querySelectorAll('.inner-dark-stage'));
+          panels.forEach((panel,index)=>{
+            const header=panel.querySelector('.flex.items-center.justify-between.text-\\[11px\\]');
+            if(!header)return;
+            const row=header.querySelector('.flex.items-center.gap-1\\.5');
+            if(row){row.querySelectorAll('span').forEach((span,i)=>{if(i===0&&/^\\d{2}$/.test(span.textContent.trim()))span.remove()});const title=row.querySelector('span[contenteditable="true"]')||row.querySelector('span');if(title)title.textContent=(productNames[index]||productNames[0]).replace(/^\\s*\\d{1,2}\\s*[｜|·.\\-]?\\s*/,'');row.style.setProperty('margin-left','auto','important');row.style.setProperty('justify-content','flex-end','important');row.style.setProperty('text-align','right','important');}
+            header.style.setProperty('justify-content','flex-end','important');
+            header.querySelectorAll('span').forEach(span=>{if(span.textContent.trim()==='GALLe')span.remove()});
+          });
+        } else {
+          stage.querySelectorAll('.p1-header,.p8-header,.p9-header,.p10-header,.p11-header,.p1-copy-card > .flex.justify-between.text-xs,.p2-copy > .flex.justify-between.text-xs,.p3-copy > .flex.justify-between.text-xs,.p4-copy > .flex.justify-between.text-xs,.p7-copy > .flex.justify-between.text-xs,.flex.items-center.gap-1\\.5,.portfolio-corner-label').forEach(node=>node.remove());
+          stage.querySelectorAll('[contenteditable="true"]').forEach(node=>{if(/^\\d{2}$/.test(node.textContent.trim())||['电商设计','国内电商','跨境电商'].includes(node.textContent.trim()))node.remove()});
+        }
+        const label=document.createElement('div'); label.className='portfolio-corner-label';
+        const n=document.createElement('span'); n.className='portfolio-corner-number'; n.textContent=number;
+        const c=document.createElement('span'); c.className='portfolio-corner-category'; c.textContent=category;
+        label.append(n,c); stage.style.position='relative'; stage.append(label);
+      });
+    })();
+  </script>  <script id="remove-stray-template-letters-runtime">
+    (()=>{
+      document.querySelectorAll('.poster-board').forEach(article=>{
+        article.querySelectorAll('[contenteditable="true"]').forEach(node=>{
+          const t=node.textContent.trim();
+          if(['STUDY','RECORDING','GALLe'].includes(t)||/^P\\d{2}\\s*\\//.test(t))node.remove();
+        });
+        article.querySelectorAll('.inner-dark-stage > .flex.items-end.justify-between.text-neutral-100').forEach(node=>node.remove());
+      });
+    })();
+  </script>  <script id="remove-lettermarks-pages-2-3-4-8">
+    (() => {
+      ['2','3','4','8'].forEach(board => {
+        const article=document.querySelector('.poster-board[data-board="'+board+'"]');
+        if(!article)return;
+        if(board==='8')article.querySelectorAll('.p8-header > span:last-child').forEach(node=>node.remove());
+        article.querySelectorAll('*').forEach(node=>{
+          if(node.children.length===0 && ['GALLe','STUDY','RECORDING'].includes(node.textContent.trim())) node.remove();
+        });
+      });
+    })();
+  </script>  <script id="remove-page-eight-galle">
+    (() => {
+      const board = document.querySelector('.poster-board[data-board="7"]');
+      if (!board) return;
+      board.querySelectorAll('*').forEach(node => {
+        if (node.children.length === 0 && node.textContent.trim() === 'GALLe') node.remove();
+      });
+    })();
+  </script>  <style id="hide-template-control-area">
+    body > header.no-print,
+    body > .no-print.max-w-\\[920px\\] { display:none!important; }
+  </style>
+  <script id="continuous-template-without-controls">
+    (()=>{
+      const stream=document.getElementById('btnViewStream');
+      if(stream)stream.click();
+      document.querySelectorAll('body > header.no-print, body > .no-print.max-w-\\[920px\\]').forEach(node=>node.remove());
+    })();
+  </script>
+  <script id="disable-page-six-upload-clicks">
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.poster-board[data-board="6"] .upload-slot')) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }, true);
+  </script></body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

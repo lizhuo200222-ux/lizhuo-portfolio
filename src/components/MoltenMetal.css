@@ -1,0 +1,23 @@
+.molten-metal {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #050a10;
+  opacity: var(--molten-opacity, 1);
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.molten-metal canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: saturate(1.08) contrast(1.04);
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .molten-metal canvas { filter: saturate(1.02); }
+}
+

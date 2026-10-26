@@ -1,0 +1,47 @@
+.spotlight-card {
+  --spotlight-card-x: 50%;
+  --spotlight-card-y: 50%;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: inherit;
+  background: inherit;
+  transition: transform 180ms cubic-bezier(.16, 1, .3, 1), box-shadow 180ms ease;
+}
+
+.spotlight-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(260px circle at var(--spotlight-card-x) var(--spotlight-card-y), var(--spotlight-card-color), transparent 70%);
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.spotlight-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: 1px solid color-mix(in srgb, var(--spotlight-card-color) 70%, transparent);
+  border-radius: inherit;
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.spotlight-card > * { position: relative; z-index: 1; }
+.spotlight-card.is-spotlight-active { transform: translateY(-2px); box-shadow: 0 22px 60px rgba(0, 0, 0, 0.26); }
+.spotlight-card.is-spotlight-active::before,
+.spotlight-card.is-spotlight-active::after { opacity: 1; }
+.spotlight-card.is-spotlight-pressed { transform: translateY(1px) scale(0.995); }
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-card,
+  .spotlight-card::before,
+  .spotlight-card::after { transition: none; }
+  .spotlight-card.is-spotlight-active,
+  .spotlight-card.is-spotlight-pressed { transform: none; box-shadow: none; }
+}

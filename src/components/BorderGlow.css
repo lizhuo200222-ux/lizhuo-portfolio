@@ -1,0 +1,51 @@
+.border-glow {
+  --border-glow-opacity: 0;
+  --border-glow-angle: 0deg;
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--border-glow-radius);
+  background: var(--border-glow-bg);
+}
+
+.border-glow::before,
+.border-glow::after {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  content: '';
+  pointer-events: none;
+}
+
+.border-glow::before {
+  z-index: -2;
+  padding: 2px;
+  background: conic-gradient(from var(--border-glow-angle), var(--border-glow-c1), var(--border-glow-c2), var(--border-glow-c3), var(--border-glow-c1));
+  filter: blur(var(--border-glow-blur));
+  opacity: calc(var(--border-glow-opacity) * 0.9);
+  transform: translateZ(0);
+}
+
+.border-glow::after {
+  z-index: -1;
+  border: 1px solid rgba(var(--border-glow-rgb), calc(var(--border-glow-opacity) * 0.65));
+  box-shadow: 0 0 22px rgba(var(--border-glow-rgb), calc(var(--border-glow-opacity) * 0.18));
+}
+
+.border-glow > * {
+  position: relative;
+  z-index: 1;
+}
+
+.border-glow.is-border-glow-animated::before {
+  animation: border-glow-rotate 7s linear infinite;
+}
+
+@keyframes border-glow-rotate {
+  to { transform: rotate(360deg) translateZ(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-glow.is-border-glow-animated::before { animation: none; }
+  .border-glow::before,
+  .border-glow::after { transition: none; }
+}

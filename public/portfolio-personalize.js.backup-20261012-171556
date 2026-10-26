@@ -1,0 +1,66 @@
+(() => {
+ const style=document.createElement('style');style.textContent=`/* Remove the reference template CEO contact card and its layout slot. */ .framer-J6Nvq,div:has(>a.framer-J6Nvq){display:none!important}#framer-badge-container,#__framer-badge-container,[data-framer-name="Logo"]>a>*,[data-framer-name="Place Your Logo Here"]>div:not(.xiaoli-wordmark){display:none!important}[data-framer-name="Logo"]{position:relative!important;min-height:24px}[data-framer-name="Logo"]:after{content:'XIAOLI®';position:absolute;left:0;top:50%;transform:translateY(-50%);font:800 20px Arial,sans-serif;color:#fff;pointer-events:none;letter-spacing:-1px}[data-framer-name="Place Your Logo Here"]:not(:has(.xiaoli-wordmark)):after{content:'XIAOLI ×';display:block;font:900 clamp(40px,16vw,240px)/.85 Arial,sans-serif;letter-spacing:-.07em}[class*="framer-9weVr"]{display:none!important}a[href*="framer.com"]{pointer-events:none}`;document.head.append(style);
+ let pending=false;
+ const resultCards=[
+  {selector:'.framer-1g23nsb-container',prefix:'约',unit:'制作周期缩短',target:'visual-production',capability:'.framer-14miuru-container'},
+  {selector:'.framer-7zvvok-container',prefix:'',unit:'个机器人',target:'data-automation',capability:'.framer-1pihqpm-container'},
+  {selector:'.framer-4c4yj0-container',prefix:'',unit:'份分析成果',target:'market-analysis',capability:'.framer-1pihqpm-container'}
+ ];
+ const processes=[
+  [['需求整理','梳理参考图、产品信息、构图、场景、角度与光线需求。'],['批量生成','将成熟方案整理为制作模板，批量生成候选图片。'],['一致性检查','筛选候选图，复核产品结构、材质、Logo 与细节。'],['精修交付','调整问题细节，完成后期精修并整理交付素材。']],
+  [['采集需求','梳理 1688 竞品、推广与销售等核心数据维度。'],['机器人搭建','使用影刀从零搭建 7 个数据机器人。'],['定时采集','建立定时采集流程，减少重复操作。'],['清洗汇总','清洗采集结果并汇总，为后续分析准备数据。']],
+  [['平台数据整理','整理 1688、亚马逊与拼多多相关数据。'],['可视化看板','将整理后的数据接入九数云，制作可视化看板。'],['分析输出','输出 20+ 份竞品及运营分析成果。'],['决策参考','为商品策略与运营决策提供数据支持。']]
+ ];
+ const processStyle=document.createElement('style');processStyle.textContent=`.portfolio-process{width:100%;box-sizing:border-box;border-top:1px solid #8884;padding-top:20px;font:400 14px/1.7 Arial,"Microsoft YaHei",sans-serif;color:#333}.portfolio-process[hidden]{display:none!important}.portfolio-process h3{font-size:15px;margin:0 0 16px;font-weight:600}.portfolio-process ol{list-style:none;padding:0;margin:0;display:grid;gap:16px}.portfolio-process li{display:grid;grid-template-columns:24px 1fr;gap:8px}.portfolio-process .step-number{opacity:.5;font-size:12px;padding-top:2px}.portfolio-process strong{display:block;font-weight:600}.portfolio-process p{margin:4px 0 0;opacity:.7}.framer-4c4yj0-container .portfolio-process{color:#fff}section[data-framer-name="Pricing"] a[role="button"]:focus-visible{outline:2px solid currentColor;outline-offset:6px}`;document.head.append(processStyle);
+ function personalizeResults(){
+  const section=document.querySelector('section[data-framer-name="Pricing"]');if(!section)return;
+  for(const [index,item] of resultCards.entries()){
+   const card=section.querySelector(item.selector);if(!card)continue;
+   const set=(selector,value)=>{const el=card.querySelector(selector);if(el&&el.textContent!==value)el.textContent=value;};
+   set('[data-framer-name="Currency"] p',item.prefix);
+   set('[data-framer-name="Duration"] p',item.unit);
+   const link=card.querySelector('a');if(!link)continue;
+   const panelId='process-'+item.target;
+   let panel=card.querySelector('.portfolio-process');
+   if(!panel){
+    panel=document.createElement('div');panel.className='portfolio-process';panel.id=panelId;panel.hidden=true;
+    panel.innerHTML='<h3>项目过程</h3><ol>'+processes[index].map(([title,body],i)=>'<li><span class="step-number">0'+(i+1)+'</span><div><strong>'+title+'</strong><p>'+body+'</p></div></li>').join('')+'</ol>';
+    card.firstElementChild.append(panel);
+   }
+   set('a p',panel.hidden?'项目过程':'收起过程');
+   link.setAttribute('href','#'+panelId);link.setAttribute('role','button');link.setAttribute('aria-controls',panelId);link.setAttribute('aria-expanded',String(!panel.hidden));
+
+  }
+
+ }
+ const archiveViewer=document.createElement('dialog');
+ archiveViewer.className='archive-viewer';
+ archiveViewer.innerHTML='<button type="button" class="archive-close" aria-label="关闭大图">×</button><button type="button" class="archive-prev" aria-label="上一张">‹</button><figure><img alt=""><figcaption></figcaption></figure><button type="button" class="archive-next" aria-label="下一张">›</button>';
+ document.body.append(archiveViewer);
+ let archiveImages=[],archiveIndex=0;
+ function showArchiveImage(){const image=archiveViewer.querySelector('img');image.src=archiveImages[archiveIndex];image.alt='精选作品 '+(archiveIndex+1);archiveViewer.querySelector('figcaption').textContent=(archiveIndex+1)+' / '+archiveImages.length;}
+ function openArchive(row,clickedImage){const id=row.dataset.selectedProject;archiveImages=[1,2,3].map(i=>'/assets/archive-selected/'+id+'-'+i+'.jpg');archiveIndex=Math.max(0,archiveImages.indexOf(clickedImage?new URL(clickedImage.currentSrc,location.origin).pathname:''));showArchiveImage();archiveViewer.showModal();document.body.style.overflow='hidden';}
+ function closeArchive(){archiveViewer.close();document.body.style.overflow='';}
+ archiveViewer.querySelector('.archive-close').onclick=closeArchive;
+ archiveViewer.querySelector('.archive-prev').onclick=()=>{archiveIndex=(archiveIndex+2)%3;showArchiveImage();};
+ archiveViewer.querySelector('.archive-next').onclick=()=>{archiveIndex=(archiveIndex+1)%3;showArchiveImage();};
+ archiveViewer.addEventListener('click',e=>{if(e.target===archiveViewer)closeArchive();});
+ archiveViewer.addEventListener('close',()=>{document.body.style.overflow='';});
+ archiveViewer.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();archiveViewer.querySelector('.archive-next').click();}if(e.key==='ArrowLeft'){e.preventDefault();archiveViewer.querySelector('.archive-prev').click();}});
+ function apply(){pending=false;const root=document.getElementById('main');if(!root)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(n){return /SCRIPT|STYLE/.test(n.parentElement?.tagName)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}});let node;while(node=walker.nextNode()){if(node.parentElement?.closest('section[data-framer-name="Testimonial"]')&&node.data.trim()==='© 2026'){node.data='2023–2026';continue;}if(node.parentElement?.closest('section[data-framer-name="Testimonial"]')&&/20\d{2}(?:\.\d{2})?[—–-]20\d{2}/.test(node.data))continue;const next=node.data.replace(/\b20(?:0\d|1\d|2\d)\b/g,'2026').replace(/FX-25/g,'FX-26').replace(/19'/g,"26'").replace(/sayhi@fuelstudio\.com/g,'3453026257@qq.com');if(next!==node.data)node.data=next;}
+ for(const a of document.querySelectorAll('a[href]')){const raw=a.getAttribute('href');if(!raw)continue;if(raw.startsWith('mailto:')){a.setAttribute('href','mailto:3453026257@qq.com');continue;}let url;try{url=new URL(raw,location.origin+'/')}catch{continue;}if(url.origin!==location.origin){a.setAttribute('href','/#top');a.removeAttribute('target');}else if(a.target==='_blank'){a.removeAttribute('target');}}
+ const phoneLink=document.querySelector('section[data-framer-name="About"] a');if(phoneLink&&phoneLink.textContent.includes('13555558884')){phoneLink.removeAttribute('href');phoneLink.removeAttribute('target');phoneLink.style.cursor='text';}
+ const archive=document.querySelector('section[data-framer-name="Archive"]');
+ if(archive){archive.id='more-work';['.framer-1gjgywn-container','.framer-1c7xt9w-container','.framer-6om6j8-container','.framer-ycquz-container'].forEach((selector,i)=>{const row=archive.querySelector(selector);if(row){row.dataset.selectedProject=String(i+1);row.setAttribute('role','link');row.tabIndex=0;row.style.cursor='pointer';}});}
+ for(const card of document.querySelectorAll('a[href*="noara-willis"]')){
+  for(const image of card.querySelectorAll('img')){if(image.getAttribute('src')!=='/assets/detail-card-cover.jpg'){image.removeAttribute('srcset');image.setAttribute('src','/assets/detail-card-cover.jpg');image.alt='电商详情页设计';}}
+  for(const text of card.querySelectorAll('p')){if(text.textContent==='Noara Willis')text.textContent='详情页';else if(text.textContent==='Strategy')text.textContent='电商视觉设计';}
+ }
+ personalizeResults();
+ document.title='XIAOLI / PORTFOLIO';
+ }
+ const observer=new MutationObserver(()=>{if(!pending){pending=true;requestAnimationFrame(apply)}});observer.observe(document.body,{subtree:true,childList:true,characterData:true});apply();
+ document.addEventListener('click',event=>{const project=event.target.closest('[data-selected-project]');if(project){event.preventDefault();event.stopImmediatePropagation();openArchive(project,event.target.closest('img'));return;}const a=event.target.closest('a');if(!a)return;if(a.closest('section[data-framer-name="About"]')&&a.textContent.includes('13555558884')){event.preventDefault();event.stopImmediatePropagation();return;}const raw=a.getAttribute('href')||'';if(a.closest('section[data-framer-name="Pricing"]')&&a.getAttribute('aria-controls')){event.preventDefault();event.stopImmediatePropagation();const panel=document.getElementById(a.getAttribute('aria-controls'));if(panel){panel.hidden=!panel.hidden;a.setAttribute('aria-expanded',String(!panel.hidden));const text=a.querySelector('p');if(text)text.textContent=panel.hidden?'项目过程':'收起过程';}return;}if(raw.startsWith('mailto:'))return;const url=new URL(raw,location.origin+'/');if(url.origin!==location.origin){event.preventDefault();event.stopImmediatePropagation();location.assign('/#top');}},true);
+ document.addEventListener('keydown',event=>{const project=event.target.closest('[data-selected-project]');if(project&&(event.key==='Enter'||event.key===' ')){event.preventDefault();project.click();return;}const link=event.target.closest('a[aria-controls][role="button"]');if(link&&event.key===' '){event.preventDefault();link.click();}});
+})();
+

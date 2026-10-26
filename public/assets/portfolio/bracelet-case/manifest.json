@@ -1,0 +1,205 @@
+[
+  {
+    "Source": "详情页\\1.jpg",
+    "Output": "detail\\01.jpg",
+    "Width": 788,
+    "Height": 1400,
+    "Bytes": 166102
+  },
+  {
+    "Source": "详情页\\2.jpg",
+    "Output": "detail\\02.jpg",
+    "Width": 788,
+    "Height": 1400,
+    "Bytes": 176314
+  },
+  {
+    "Source": "详情页\\3.jpg",
+    "Output": "detail\\03.jpg",
+    "Width": 788,
+    "Height": 1400,
+    "Bytes": 166866
+  },
+  {
+    "Source": "详情页\\4.jpg",
+    "Output": "detail\\04.jpg",
+    "Width": 788,
+    "Height": 1400,
+    "Bytes": 186647
+  },
+  {
+    "Source": "详情页\\5.jpg",
+    "Output": "detail\\05.jpg",
+    "Width": 788,
+    "Height": 1400,
+    "Bytes": 156568
+  },
+  {
+    "Source": "详情页\\6.jpg",
+    "Output": "detail\\06.jpg",
+    "Width": 788,
+    "Height": 1400,
+    "Bytes": 165806
+  },
+  {
+    "Source": "详情页\\7.jpg",
+    "Output": "detail\\07.jpg",
+    "Width": 788,
+    "Height": 1400,
+    "Bytes": 164164
+  },
+  {
+    "Source": "详情页\\8.jpg",
+    "Output": "detail\\08.jpg",
+    "Width": 788,
+    "Height": 1400,
+    "Bytes": 147135
+  },
+  {
+    "Source": "主图\\1.jpg",
+    "Output": "main\\01.jpg",
+    "Width": 1400,
+    "Height": 1400,
+    "Bytes": 288503
+  },
+  {
+    "Source": "主图\\2.jpg",
+    "Output": "main\\02.jpg",
+    "Width": 1400,
+    "Height": 1400,
+    "Bytes": 284314
+  },
+  {
+    "Source": "主图\\3.jpg",
+    "Output": "main\\03.jpg",
+    "Width": 1400,
+    "Height": 1400,
+    "Bytes": 309658
+  },
+  {
+    "Source": "主图\\4.jpg",
+    "Output": "main\\04.jpg",
+    "Width": 1400,
+    "Height": 1400,
+    "Bytes": 293824
+  },
+  {
+    "Source": "主图\\5.jpg",
+    "Output": "main\\05.jpg",
+    "Width": 1400,
+    "Height": 1400,
+    "Bytes": 259188
+  },
+  {
+    "Source": "AI_Bracelet_Batch_01.png",
+    "Output": "exploration\\batch-01.jpg",
+    "Width": 928,
+    "Height": 1152,
+    "Bytes": 191064
+  },
+  {
+    "Source": "AI_Bracelet_Batch_02.png",
+    "Output": "exploration\\batch-02.jpg",
+    "Width": 928,
+    "Height": 1152,
+    "Bytes": 208610
+  },
+  {
+    "Source": "AI_Bracelet_Batch_03.png",
+    "Output": "exploration\\batch-03.jpg",
+    "Width": 928,
+    "Height": 1152,
+    "Bytes": 221212
+  },
+  {
+    "Source": "AI_Bracelet_Batch_04.png",
+    "Output": "exploration\\batch-04.jpg",
+    "Width": 928,
+    "Height": 1152,
+    "Bytes": 153758
+  },
+  {
+    "Source": "AI_Bracelet_Batch_05.png",
+    "Output": "exploration\\batch-05.jpg",
+    "Width": 928,
+    "Height": 1152,
+    "Bytes": 200108
+  },
+  {
+    "Source": "AI_Bracelet_Batch_08_Main_B.png",
+    "Output": "exploration\\batch-08.jpg",
+    "Width": 928,
+    "Height": 1152,
+    "Bytes": 189062
+  },
+  {
+    "Source": "AI_Bracelet_Batch_09_Lifestyle.png",
+    "Output": "exploration\\batch-09.jpg",
+    "Width": 928,
+    "Height": 1152,
+    "Bytes": 140751
+  },
+  {
+    "Source": "AI_Bracelet_Batch_10_Detail.png",
+    "Output": "exploration\\batch-10.jpg",
+    "Width": 928,
+    "Height": 1152,
+    "Bytes": 166911
+  },
+  {
+    "Source": "ChatGPT Image 2026年8月22日 15_28_11.png",
+    "Output": "exploration\\art-scene.jpg",
+    "Width": 933,
+    "Height": 1400,
+    "Bytes": 192453
+  },
+  {
+    "Source": "task-112334-item-296533.jpg",
+    "Output": "process\\task-112334.jpg",
+    "Width": 1050,
+    "Height": 1400,
+    "Bytes": 224175
+  },
+  {
+    "Source": "task-112335-item-296540.jpg",
+    "Output": "process\\task-112335.jpg",
+    "Width": 1050,
+    "Height": 1400,
+    "Bytes": 251597
+  },
+  {
+    "Source": "task-112336-item-296543.jpg",
+    "Output": "process\\task-112336.jpg",
+    "Width": 1050,
+    "Height": 1400,
+    "Bytes": 206010
+  },
+  {
+    "Source": "task-112337-item-296548.jpg",
+    "Output": "process\\task-112337.jpg",
+    "Width": 1050,
+    "Height": 1400,
+    "Bytes": 323671
+  },
+  {
+    "Source": "task-112338-item-296554.jpg",
+    "Output": "process\\task-112338.jpg",
+    "Width": 1050,
+    "Height": 1400,
+    "Bytes": 171958
+  },
+  {
+    "Source": "task-112340-item-296558.jpg",
+    "Output": "process\\task-112340.jpg",
+    "Width": 1050,
+    "Height": 1400,
+    "Bytes": 190899
+  },
+  {
+    "Source": "task-112344-item-296567.jpg",
+    "Output": "process\\task-112344.jpg",
+    "Width": 1050,
+    "Height": 1400,
+    "Bytes": 236757
+  }
+]

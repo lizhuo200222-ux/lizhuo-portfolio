@@ -1,0 +1,14 @@
+node_modules
+dist/
+dist-react-preview/
+netlify-source-*/
+tmp/
+output/
+outputs/
+.netlify/
+__pycache__/
+*.zip
+
+vdeo_work/
+video_work/
+视频剪辑/

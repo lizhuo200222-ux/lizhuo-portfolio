@@ -1,0 +1,3 @@
+.variable-proximity { display: inline; white-space: pre-wrap; }
+.variable-proximity-letter { display: inline-block; font-variation-settings: inherit; transition: font-variation-settings 110ms ease, font-weight 110ms ease; }
+@media (prefers-reduced-motion: reduce) { .variable-proximity-letter { transition: none; } }

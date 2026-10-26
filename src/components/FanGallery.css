@@ -1,0 +1,26 @@
+.fan-gallery { position: relative; display: grid; min-height: 420px; grid-template-rows: minmax(0,1fr) auto; overflow: hidden; background: transparent; user-select: none; }
+.fan-gallery-stage { position: relative; min-height: 400px; perspective: 1200px; touch-action: none; cursor: grab; }
+.fan-gallery-stage.is-dragging { cursor: grabbing; }
+.fan-gallery-stage.is-sliding { animation: fan-stage-slide 760ms cubic-bezier(.16,1,.3,1); }
+.fan-gallery-card { position: absolute; top: 43%; left: 50%; z-index: var(--fan-layer); width: clamp(118px, 11vw, 172px); aspect-ratio: 2 / 3; padding: 0; overflow: hidden; border: 1px solid rgba(240,242,237,.11); border-radius: 14px; background: #15191d; opacity: var(--fan-opacity); box-shadow: 0 18px 38px rgba(0,0,0,.24); cursor: pointer; filter: saturate(.72) brightness(.78); transform: translate(-50%,-50%) translate3d(var(--fan-x),var(--fan-y),0) rotate(var(--fan-rotate)) scale(var(--fan-scale)); transform-origin: 50% 100%; transition: opacity 360ms ease, transform 620ms cubic-bezier(.16,1,.3,1), border-color 240ms ease, filter 360ms ease, box-shadow 360ms ease; will-change: transform; }
+.fan-gallery-card:hover, .fan-gallery-card:focus-visible, .fan-gallery-card.is-active { border-color: rgba(200,255,54,.55); opacity: 1; filter: saturate(1) brightness(1); outline: none; box-shadow: 0 22px 48px rgba(0,0,0,.34); }
+.fan-gallery-card.is-active { cursor: zoom-in; }
+.fan-gallery-card-inner { display: block; width: 100%; height: 100%; animation: fan-card-idle 12s ease-in-out infinite alternate; transform-origin: 50% 100%; }
+.fan-gallery-card img { width: 100%; height: 100%; object-fit: cover; }
+.fan-gallery-controls { display: grid; width: min(260px, calc(100% - 24px)); min-height: 52px; grid-template-columns: 40px 1fr 40px; align-items: center; gap: 10px; justify-self: center; margin-bottom: 10px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 999px; background: #111416; }
+.fan-gallery-controls button { display: grid; width: 38px; height: 38px; place-items: center; padding: 0; border: 1px solid rgba(200,255,54,.5); border-radius: 50%; background: #c8ff36; color: #10150c; cursor: pointer; }
+.fan-gallery-controls button:active { transform: scale(.96); }
+.fan-gallery-controls button:focus-visible { outline: 2px solid #f0f2ed; outline-offset: 3px; }
+.fan-gallery-controls small { color: #98a29f; font-family: ui-monospace,SFMono-Regular,Consolas,monospace; font-size: 9px; text-align: center; }
+.fan-gallery-empty { display: grid; min-height: 320px; place-items: center; color: #98a29f; }
+@media (max-width: 560px) {
+  .fan-gallery { min-height: 360px; }
+  .fan-gallery-stage { min-height: 300px; }
+  .fan-gallery-card { width: 108px; }
+}
+@keyframes fan-card-idle { from { transform: rotate(-0.7deg); } to { transform: rotate(0.7deg); } }
+@keyframes fan-stage-slide { 0% { opacity: .86; transform: translateX(8px); } 45% { opacity: 1; transform: translateX(-8px); } 100% { opacity: 1; transform: translateX(0); } }
+.fan-gallery-card:hover .fan-gallery-card-inner,
+.fan-gallery-card:focus-visible .fan-gallery-card-inner,
+.fan-gallery-card.is-active .fan-gallery-card-inner { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .fan-gallery-stage.is-sliding, .fan-gallery-card, .fan-gallery-card-inner { transition: none; animation: none; } }
