@@ -938,7 +938,14 @@ function RpaAutomationCase() {
   );
 }
 
-function App() {
+function App() {  useEffect(() => {
+    const onClick = (event) => {
+      const target = event.target.closest("a,button");
+      if (!target || !target.textContent.includes("从烽火到回答")) return;
+      event.preventDefault();
+      const video = document.createElement("video"); video.src = "/assets/ai-film-beacons-to-answers.mp4"; video.controls = true; video.autoplay = true; video.playsInline = true; video.style.cssText = "position:fixed;inset:8vh 8vw;width:84vw;height:84vh;z-index:99999;background:#000"; document.body.appendChild(video); video.play().catch(() => {});
+    }; document.addEventListener("click", onClick); return () => document.removeEventListener("click", onClick);
+  }, []);
   const profileHeadingRef = useRef(null);
   useReveal();
   useHashScroll();

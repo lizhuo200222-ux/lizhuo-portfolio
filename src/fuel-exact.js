@@ -4,7 +4,7 @@ import './fuel-exact.css';
 import {mountReferenceFluid} from './reference-fluid';
 const layer=document.createElement('div');
 layer.className='xiaoli-hero-layer';
-layer.innerHTML='<video class="xiaoli-hero-video" autoplay muted loop playsinline preload="auto" poster="/assets/hero-user-final-poster.jpg" aria-label="李卓首屏视觉作品"><source src="/assets/hero-user-final.mp4" type="video/mp4"></video>';
+layer.innerHTML='<video class="xiaoli-hero-video" autoplay muted loop playsinline preload="auto" aria-label="李卓首屏视觉作品"><source src="/assets/portfolio-hero-kling.mp4" type="video/mp4"></video>';
 document.body.append(layer);
 const video=layer.querySelector('video');video.muted=true;video.playsInline=true;video.addEventListener('loadeddata',()=>{video.play().catch(()=>{});},{once:false});video.addEventListener('canplay',()=>{if(!matchMedia('(prefers-reduced-motion:reduce)').matches)video.play().catch(()=>{});},{once:false});
 let fluidCleanup=null,fluidCanvas=null;
@@ -17,9 +17,6 @@ video.addEventListener('loadeddata',updateFluid);
 const update=()=>{
  const hero=document.querySelector('section[data-framer-name="Hero"]');
  if(!hero)return;
- document.querySelectorAll('section[data-framer-name="Pricing"],section[data-framer-name="Testimonial"],section[data-framer-name="Article"],section[data-framer-name="L"]').forEach(node=>node.remove());
- document.querySelectorAll('[aria-hidden="true"] img,[aria-hidden="true"] video,canvas').forEach(node=>{if(!layer.contains(node))node.remove();});
- document.querySelectorAll('video').forEach(node=>{if(!layer.contains(node))node.remove();});
  const wordmark=hero.querySelector('[data-framer-name="Place Your Logo Here"]');
  if(wordmark&&!wordmark.querySelector('.xiaoli-wordmark')){const text=document.createElement('div');text.className='xiaoli-wordmark';text.innerHTML='<span>XIAOLI</span><span>×</span>';wordmark.append(text);}
  if(wordmark){const r=wordmark.getBoundingClientRect();wordmark.style.setProperty('--xiaoli-type',Math.min(r.width*.155,r.height*1.2)+'px');}const bg=hero.querySelector(':scope > [data-framer-name="BG Image"]');if(bg){bg.querySelectorAll('img,[data-framer-background-image-wrapper],video,canvas').forEach(node=>{if(!layer.contains(node))node.remove();});if(layer.parentElement!==bg)bg.append(layer);}hero.querySelectorAll('img,video:not(.xiaoli-hero-video),canvas').forEach(node=>{if(!layer.contains(node))node.remove();});const box=hero.getBoundingClientRect();

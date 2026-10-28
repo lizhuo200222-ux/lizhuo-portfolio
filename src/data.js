@@ -226,7 +226,7 @@ export const portfolioCases = {
     items: Array.from({ length: 8 }, (_, index) => ({
       number: String(index + 1).padStart(2, '0'),
       image: `/assets/portfolio/kitten/${String(index + 1).padStart(2, '0')}.jpg`,
-      video: null,
+      video: index === 1 ? '/assets/portfolio/kitten/02.mp4' : null,
       label: index < 3 ? '角色档案与识别系统' : '动作、服装与周边延展',
     })),
   },
