@@ -9,11 +9,18 @@
   if (window.__portfolioShell) return;
   window.__portfolioShell = true;
 
+  // 少写斜杠的地址（/about、/contact、/work/portfolio）会被预览服务器回落到首页，这里做一次纠正
+  const CANON = { '/about': '/about/', '/contact': '/contact/', '/work/portfolio': '/#portfolio' };
+  const canon = CANON[location.pathname.replace(/\/$/, '') + (location.pathname.endsWith('/') ? '/' : '')] || CANON[location.pathname];
+  if (canon && canon !== location.pathname) {
+    location.replace(canon + location.search + location.hash);
+    return;
+  }
   const MOBILE_MAX = 809.98;
   const FILM = '/assets/ai-film-beacons-to-answers.mp4';
   const NAV = [
     ['首页', '/'],
-    ['作品集', '/work/portfolio/'],
+    ['作品集', '/#portfolio'],
     ['关于我', '/about/'],
     ['联系我', '/contact/'],
   ];
@@ -21,6 +28,7 @@
   const css = `
 :focus-visible{outline:2px solid #c8ff36!important;outline-offset:3px!important}
 #main{--shell-accent:#c8ff36}
+footer [data-framer-name="Place Your Logo Here"]:after{color:#fff!important}
 footer a[href^="mailto:"],a[href^="mailto:"]{overflow-wrap:anywhere;word-break:break-word}
 a[href="/work/portfolio/"] p{font-weight:500!important;letter-spacing:0!important}
 @media (max-width:${MOBILE_MAX}px){
@@ -95,7 +103,8 @@ html.x-menu-open,html.x-menu-open body{overflow:hidden}
 
   /* ---------- 链接 ---------- */
   const FIX = [
-    ['./work/portfolio', '/work/portfolio/'],
+    ['./work/portfolio', '/#portfolio'],
+    ['/work/portfolio/', '/#portfolio'],
     ['./about', '/about/'],
     ['./contact', '/contact/'],
   ];
@@ -287,9 +296,103 @@ html.x-menu-open,html.x-menu-open body{overflow:hidden}
       arr.slice(1).forEach((el) => { el.style.visibility = 'hidden'; });
     }
   }
+  /* ---------- 删除首屏右上角的模板状态卡（Meet the CEO / 现在可接单） ---------- */
+  function removeHeroStatusCard() {
+    const matches = (el) => /现在可接单|Meet the CEO|Lousiana KD6/.test((el.textContent || '').slice(0, 200));
+    const card = [...document.querySelectorAll('a, header, div')].find((el) => matches(el) && el.getBoundingClientRect().width > 0 && el.getBoundingClientRect().width < 500 && el.getBoundingClientRect().top < 200);
+    if (!card) return;
+    card.remove();
+    // Framer 可能在 hydration 后重新挂载，因此不做一次性标记，持续清理
+    document.documentElement.dataset.xNoStatusCard = '1';
+  }
+  /* ---------- 删除首屏「查看我的个人简介」入口 ---------- */
+  function removeHeroResumeLink() {
+    const hero = document.querySelector('section[data-framer-name="Hero"]');
+    if (!hero) return;
+    const link = [...hero.querySelectorAll('a')].find((a) => /查看我的个人简介/.test(a.textContent || ''));
+    if (!link) return;
+    // 先量出链接宽度，隐藏后把这个宽度留在外层容器上，避免左侧文字列被压成竖排
+    const box = link.closest('.framer-sg0uxd-container');
+    const w = Math.round(link.getBoundingClientRect().width);
+    link.style.setProperty('display', 'none', 'important');
+    link.setAttribute('aria-hidden', 'true');
+    link.setAttribute('tabindex', '-1');
+    if (box) {
+      box.style.setProperty('height', '0', 'important');
+      box.style.setProperty('min-height', '0', 'important');
+      box.style.setProperty('margin', '0', 'important');
+      box.style.setProperty('padding', '0', 'important');
+      box.style.setProperty('overflow', 'hidden', 'important');
+      if (w > 0) box.style.setProperty('width', w + 'px', 'important');
+    }
+  }
+  /* ---------- 删除「我是李卓…」区块里的「查看作品集」入口 ---------- */
+  function removeSectionCta() {
+    for (const a of document.querySelectorAll('a')) {
+      const t = (a.textContent || '').replace(/\s+/g, '').trim();
+      if (!/查看作品集|查看全部作品/.test(t)) continue;
+      if (a.dataset.xGone === '1') continue;
+      const box = a.parentElement;
+      const w = Math.round(a.getBoundingClientRect().width);
+      a.dataset.xGone = '1';
+      a.style.setProperty('display', 'none', 'important');
+      a.setAttribute('aria-hidden', 'true');
+      a.setAttribute('tabindex', '-1');
+      if (box) {
+        box.style.setProperty('height', '0', 'important');
+        box.style.setProperty('min-height', '0', 'important');
+        box.style.setProperty('margin', '0', 'important');
+        box.style.setProperty('padding', '0', 'important');
+        box.style.setProperty('overflow', 'hidden', 'important');
+        if (w > 0) box.style.setProperty('width', w + 'px', 'important');
+      }
+    }
+  }
+  /* ---------- 页脚：标题对比度 + 巨型字标配色 ---------- */
+  function footerFix() {
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+    for (const el of footer.querySelectorAll('h1,h2,h3,h4,p,span,div')) {
+      if (el.children.length !== 0) continue;
+      if ((el.textContent || '').trim() === '让创意成为作品') {
+        el.style.setProperty('color', '#ffffff', 'important');
+      }
+    }
+    footer.querySelectorAll('[data-framer-name="Place Your Logo Here"]').forEach((el) => {
+      el.style.setProperty('color', '#ffffff', 'important');
+    });
+
+    // 导航精简：去掉与顶部重复的「首页」，隐藏 01–04 数字角标
+    for (const a of footer.querySelectorAll('a')) {
+      const t = (a.textContent || '').replace(/\s+/g, '').trim();
+      if (t === '首页' || t === '首页01') a.style.setProperty('display', 'none', 'important');
+      else a.style.setProperty('min-height', '32px', 'important');
+    }
+    for (const el of footer.querySelectorAll('p,span')) {
+      if (el.children.length) continue;
+      const t = (el.textContent || '').trim();
+      if (/^0\d$/.test(t) && parseFloat(getComputedStyle(el).fontSize) <= 11) el.style.setProperty('display', 'none', 'important');
+    }
+
+    // 电话改为可拨打
+    const phone = [...footer.querySelectorAll('a')].find((a) => /^1\d{10}$/.test((a.textContent || '').trim()));
+    if (phone) {
+      phone.setAttribute('href', 'tel:13555558884');
+      phone.style.setProperty('cursor', 'pointer', 'important');
+    }
+
+    // 去掉没有含义的 19' 刻度
+    for (const el of footer.querySelectorAll('p,span')) {
+      if (el.children.length === 0 && (el.textContent || '').trim() === "19'") el.style.setProperty('display', 'none', 'important');
+    }
+  }
   function run() {
     try {
       styleOnce();
+      removeHeroStatusCard();
+      removeHeroResumeLink();
+      removeSectionCta();
+      footerFix();
       buildMenu();
       rewriteCopy();
       fixLinks();

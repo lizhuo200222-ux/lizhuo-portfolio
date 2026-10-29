@@ -23,7 +23,7 @@
  }
  removeExternalPortfolioLinks();
  new MutationObserver(()=>removeExternalPortfolioLinks()).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});
- document.addEventListener('click',event=>{const link=event.target.closest('section[data-framer-name="L"] a');if(!link)return;event.preventDefault();event.stopImmediatePropagation();location.hash='about';document.getElementById('about')?.scrollIntoView({behavior:'smooth'});},true);
+ document.addEventListener('click',event=>{const link=event.target.closest('section[data-framer-name="L"] a');if(!link)return;event.preventDefault();event.stopImmediatePropagation();location.assign('/about/');},true);
  document.addEventListener('click',event=>{const link=event.target.closest('footer a[data-footer-scroll]');if(!link)return;event.preventDefault();event.stopImmediatePropagation();const target=link.dataset.footerScroll;const el=target==='top'?document.querySelector('section[data-framer-name="Hero"]'):document.getElementById(target);if(el){history.replaceState(null,'','#'+target);el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}},true);
  document.addEventListener('click',event=>{if(event.target.closest('footer a[aria-label="联系电话 13555558884"]')){event.preventDefault();event.stopImmediatePropagation();}},true);
  let pending=false;
@@ -828,7 +828,7 @@
  if(footer){footer.id='contact-me';const labels={'Contact Now':'联系我','Home':'首页','Portfolio':'作品','About':'关于我','Contact':'联系我'};for(const el of footer.querySelectorAll('p,h1,h2,h3,span')){if(el.children.length)continue;const text=el.textContent.trim();const replacement=text.includes('work together')?'让创意成为作品':labels[text];if(replacement&&el.textContent!==replacement)el.textContent=replacement;}for(const link of footer.querySelectorAll('a')){const text=link.textContent;if(text.includes('首页'))link.setAttribute('href','/#top');else if(text.includes('作品')&&!text.includes('创意'))link.setAttribute('href','/#portfolio');else if(text.includes('关于我'))link.setAttribute('href','/#about');else if(text.includes('联系我')||text.includes('@qq.com'))link.setAttribute('href','mailto:3453026257@qq.com');}}
  personalizeAiPractice();
  personalizePortfolioCases();personalizeHomepage();personalizeStrengthsPage();personalizeCareerPage();personalizeServiceRows();personalizeResultsMetrics();personalizeArchive();personalizeAiCapabilities();personalizeWorkflow();
- if(footer){const phone=footer.querySelector('a[data-framer-name="Light"]');if(phone){const label=phone.querySelector('p');if(label&&label.textContent!=='13555558884')label.textContent='13555558884';phone.removeAttribute('href');phone.removeAttribute('target');phone.style.cursor='text';phone.style.userSelect='text';phone.setAttribute('aria-label','联系电话 13555558884');phone.querySelector('[data-framer-name="Icon"]')?.style.setProperty('display','none');}}
+ if(footer){const phone=footer.querySelector('a[data-framer-name="Light"]');if(phone){const label=phone.querySelector('p');if(label&&label.textContent!=='13555558884')label.textContent='13555558884';phone.setAttribute('href','tel:13555558884');phone.removeAttribute('target');phone.style.cursor='pointer';phone.style.userSelect='text';phone.setAttribute('aria-label','联系电话 13555558884');phone.querySelector('[data-framer-name="Icon"]')?.style.setProperty('display','none');}}
  if(footer){const targets=['top','about','portfolio','contact-me'],labels=['首页','关于我','作品','联系我'];footer.querySelectorAll('a:has([data-framer-name="Page Name"])').forEach((link,i)=>{if(!targets[i])return;link.dataset.footerScroll=targets[i];link.setAttribute('href','#'+targets[i]);const label=link.querySelector('[data-framer-name="Page Name"] p');if(label&&label.textContent!==labels[i])label.textContent=labels[i];});}
  const villa=document.querySelector('section[data-framer-name="L"] .framer-facib3');
  const coastalSection=document.querySelector('section[data-framer-name="L"]');
@@ -838,7 +838,7 @@
  if(faq){
   faq.id='my-strengths';
   const set=(el,text)=>{if(el&&el.textContent!==text)el.textContent=text;};
-  set(faq.querySelector('.framer-r7cp99 p'),'(09) 常见问题');
+  { const kicker=faq.querySelector('.framer-r7cp99'); if(kicker){kicker.style.display='none';kicker.setAttribute('aria-hidden','true');} }
   const portrait=faq.querySelector('.framer-rq95u4-container img');
   if(portrait&&portrait.getAttribute('src')!=='/assets/strengths-profile.jpg'){portrait.removeAttribute('srcset');portrait.src='/assets/strengths-profile.jpg';portrait.alt='个人视觉作品';}
   const card=faq.querySelector('.framer-rq95u4-container a');
@@ -858,7 +858,7 @@
   });
  }
 
- if(coastalSection){const portrait=coastalSection.querySelector('.framer-k573g7 img');if(portrait&&portrait.getAttribute('src')!=='/assets/coastal-profile.jpg'){portrait.removeAttribute('srcset');portrait.src='/assets/coastal-profile.jpg';portrait.alt='关于我';}const portraitSlot=coastalSection.querySelector('.framer-k573g7');if(portraitSlot&&!portraitSlot.dataset.aboutLink){portraitSlot.dataset.aboutLink='true';portraitSlot.setAttribute('role','link');portraitSlot.setAttribute('aria-label','查看我的简介');portraitSlot.tabIndex=0;portraitSlot.style.cursor='pointer';const go=()=>{location.hash='about';document.getElementById('about')?.scrollIntoView({behavior:'smooth'});};portraitSlot.addEventListener('click',go);portraitSlot.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();go();}});}const link=coastalSection.querySelector('a');if(link){link.setAttribute('href','/#about');const label=link.querySelector('p');if(label&&label.textContent!=='关于我')label.textContent='关于我';}}
+ if(coastalSection){const portrait=coastalSection.querySelector('.framer-k573g7 img');if(portrait&&portrait.getAttribute('src')!=='/assets/coastal-profile.jpg'){portrait.removeAttribute('srcset');portrait.src='/assets/coastal-profile.jpg';portrait.alt='关于我';}const portraitSlot=coastalSection.querySelector('.framer-k573g7');if(portraitSlot&&!portraitSlot.dataset.aboutLink){portraitSlot.dataset.aboutLink='true';portraitSlot.setAttribute('role','link');portraitSlot.setAttribute('aria-label','查看我的简介');portraitSlot.tabIndex=0;portraitSlot.style.cursor='pointer';const go=()=>{location.assign('/about/');};portraitSlot.addEventListener('click',go);portraitSlot.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();go();}});}const link=coastalSection.querySelector('a');if(link){link.setAttribute('href','/about/');const label=link.querySelector('p');if(label&&label.textContent!=='关于我')label.textContent='关于我';}}
  if(villa){villa.querySelector('.coastal-loop')?.remove();const image=villa.querySelector('img');if(image&&image.getAttribute('src')!=='/assets/coastal-villa-dusk.png'){image.removeAttribute('srcset');image.src='/assets/coastal-villa-dusk.png';image.alt='海边别墅夕阳';}}
  setupAiPracticeArchive();
  setupAIVideoViewer();
